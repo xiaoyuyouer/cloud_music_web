@@ -1,0 +1,128 @@
+@import '~normalize.css';
+@import '~antd/dist/antd.css';
+
+/* 样式的重置 */
+body,
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+header,
+menu,
+section,
+p,
+input,
+td,
+th,
+ins {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+a:hover {
+    color: #666;
+    text-decoration: underline;
+}
+
+i,
+em {
+    font-style: normal;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+    outline: none;
+    border: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+/* 全局样式 */
+body,
+textarea,
+select,
+input,
+button {
+    font-size: 12px;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.w1100 {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.w980 {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.text-indent {
+    text-indent: -9999px;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.lyric-css .ant-message-notice-content {
+    position: fixed;
+    left: 50%;
+    bottom: 50px;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #f5f5f5;
+}
+
+.no-link {
+    pointer-events: none;
+}
+
+
+main.content {
+    width: 980px;
+    min-height: 700px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #d3d3d3;
+    border-width: 0 1px;
+}

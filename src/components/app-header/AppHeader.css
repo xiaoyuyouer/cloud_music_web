@@ -15,7 +15,6 @@
 
 .app-header-group {
     display: flex;
-    color: #ccc;
     font-size: 14px;
 }
 
@@ -25,11 +24,13 @@
     height: 70px;
     text-align: center;
     line-height: 70px;
+    color: #ccc;
 }
 
 .app-header-item:hover {
     text-decoration: none;
     background-color: #000;
+    color: #fff;
 }
 
 .app-header-item-active {
@@ -38,8 +39,14 @@
     height: 70px;
     text-align: center;
     line-height: 70px;
-    color: #fff;
     background-color: #000;
+    color: #fff;
+}
+
+.app-header-item-active:hover {
+    text-decoration: none;
+    background-color: #000;
+    color: #fff;
 }
 
 /* 下面的小三角 */

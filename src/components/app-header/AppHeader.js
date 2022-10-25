@@ -14,7 +14,7 @@ function AppHeader() {
             link: '/mine',
         },
         {
-            title: '朋友',
+            title: '关注',
             link: '/friend',
         },
         {
@@ -31,7 +31,7 @@ function AppHeader() {
         },
     ]
 
-    const showSelectItem = (item, index) => {
+    const headerItemView = (item, index) => {
         return (
             <NavLink
                 key={item.title}
@@ -57,7 +57,7 @@ function AppHeader() {
             <div className="app-header-logo"/>
             <div className="app-header-group">
                 {headerLinks.map((item, index) => {
-                    return showSelectItem(item, index);
+                    return headerItemView(item, index);
                 })}
             </div>
         </div>
