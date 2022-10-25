@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     background-color: #242424;
-    height: 7vh;
+    height: 70px;
 }
 
 .app-header-logo {
@@ -12,3 +12,46 @@
     height: 69px;
     background: url(../../assets/img/sprite_01.png);
 }
+
+.app-header-group {
+    display: flex;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.app-header-item {
+    position: relative;
+    padding: 0 19px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+}
+
+.app-header-item:hover {
+    text-decoration: none;
+    background-color: #000;
+}
+
+.app-header-item-active {
+    position: relative;
+    padding: 0 19px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    color: #fff;
+    background-color: #000;
+}
+
+/* 下面的小三角 */
+.app-header-item-active-icon {
+    position: absolute;
+    width: 12px;
+    height: 7px;
+    bottom: -1px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-image: url(../../assets/img/sprite_01.png);
+    background-position: 254px 0;
+}
+
+
