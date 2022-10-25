@@ -1,4 +1,4 @@
-function FollowPage() {
+function FriendPage() {
     return (
         <div>
             <h2>关注</h2>
@@ -6,4 +6,4 @@ function FollowPage() {
     );
 }
 
-export default FollowPage
+export default FriendPage

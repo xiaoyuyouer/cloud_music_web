@@ -1,4 +1,4 @@
-function MyMusicPage() {
+function MinePage() {
     return (
         <div>
             <h2>我的音乐</h2>
@@ -6,4 +6,4 @@ function MyMusicPage() {
     );
 }
 
-export default MyMusicPage
+export default MinePage

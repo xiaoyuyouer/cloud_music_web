@@ -38,11 +38,11 @@ function AppHeader() {
                 to={item.link}
                 className={({isActive}) => isActive ? "app-header-item-active" : "app-header-item"}
                 children={({isActive}) => {
-                    const cssName = isActive ? "app-header-item-active-icon" : "";
+                    const className = isActive ? "app-header-item-icon" : "";
                     return (
                         <>
                             <em>{item.title}</em>
-                            <i className={cssName}></i>
+                            <i className={className}></i>
                         </>
                     );
                 }}

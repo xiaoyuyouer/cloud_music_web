@@ -1,4 +1,4 @@
-function FindMusicPage() {
+function DiscoverPage() {
     return (
         <div>
             <h2>发现音乐</h2>
@@ -6,4 +6,4 @@ function FindMusicPage() {
     );
 }
 
-export default FindMusicPage
+export default DiscoverPage

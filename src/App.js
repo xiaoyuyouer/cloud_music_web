@@ -1,9 +1,9 @@
 import * as React from "react";
 import "./style/App.css";
 import {Route, Routes, Navigate} from "react-router-dom";
-import FindMusicPage from "./pages/find";
-import MyMusicPage from "./pages/my";
-import FollowPage from "./pages/follow";
+import DiscoverPage from "./pages/discover";
+import MinePage from "./pages/mine";
+import FriendPage from "./pages/friend";
 import MallPage from "./pages/mall";
 import MusicianPage from "./pages/musician";
 import DownloadPage from "./pages/download";
@@ -16,9 +16,9 @@ export default function App() {
             <AppHeader/>
             <Routes>
                 <Route path="/" element={<Navigate to="/discover" />}/>
-                <Route path="/discover" element={<FindMusicPage/>}/>
-                <Route path="/mine" element={<MyMusicPage/>}/>
-                <Route path="/friend" element={<FollowPage/>}/>
+                <Route path="/discover" element={<DiscoverPage/>}/>
+                <Route path="/mine" element={<MinePage/>}/>
+                <Route path="/friend" element={<FriendPage/>}/>
                 <Route path="/mall" element={<MallPage/>}/>
                 <Route path="/musician" element={<MusicianPage/>}/>
                 <Route path="/download" element={<DownloadPage/>}/>
