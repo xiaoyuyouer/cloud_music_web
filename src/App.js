@@ -16,8 +16,8 @@ export default function App() {
             <AppHeader/>
             <Routes>
                 <Route path="/" element={<FindMusicPage/>}/>
-                <Route path="/myMusic" element={<MyMusicPage/>}/>
-                <Route path="/follow" element={<FollowPage/>}/>
+                <Route path="/mine" element={<MyMusicPage/>}/>
+                <Route path="/friend" element={<FollowPage/>}/>
                 <Route path="/mall" element={<MallPage/>}/>
                 <Route path="/musician" element={<MusicianPage/>}/>
                 <Route path="/download" element={<DownloadPage/>}/>

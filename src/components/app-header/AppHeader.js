@@ -11,11 +11,11 @@ function AppHeader() {
         },
         {
             title: '我的音乐',
-            link: '/myMusic',
+            link: '/mine',
         },
         {
             title: '朋友',
-            link: '/follow',
+            link: '/friend',
         },
         {
             title: '商城',
@@ -33,16 +33,31 @@ function AppHeader() {
 
     const showSelectItem = (item, index) => {
 
-        return (
-            <NavLink
-                key={item.title}
-                to={item.link}
-                className={({isActive}) => isActive ? "app-header-item-active" : "app-header-item"}
-            >
-                <em>{item.title}</em>
-                <i className="app-header-item-active-icon"></i>
-            </NavLink>
-        );
+        if (index === 0) {
+            return (
+                <NavLink
+                    key={item.title}
+                    exact
+                    to={item.link}
+                    className={({isActive}) => isActive ? "app-header-item-active" : "app-header-item"}
+                >
+                    <em>2121212</em>
+                    <i className="app-header-item-active-icon"></i>
+                </NavLink>
+            );
+        } else {
+            return (
+                <NavLink
+                    key={item.title}
+                    to={item.link}
+                    className={({isActive}) => isActive ? "app-header-item-active" : "app-header-item"}
+                >
+                    <em>{item.title}</em>
+                    <i className="app-header-item-active-icon"></i>
+                </NavLink>
+            );
+        }
+
 
     };
 
