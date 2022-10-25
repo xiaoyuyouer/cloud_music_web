@@ -1,5 +1,5 @@
 import * as React from "react";
-import './style/App.css';
+import "./style/App.css";
 import {Route, Routes} from "react-router-dom";
 import FindMusicPage from "./pages/find";
 import MyMusicPage from "./pages/my";
@@ -12,7 +12,7 @@ import AppHeader from "./components/app-header/AppHeader";
 
 export default function App() {
     return (
-        <div className="App">
+        <div className="app">
             <AppHeader/>
             <Routes>
                 <Route path="/" element={<FindMusicPage/>}/>
