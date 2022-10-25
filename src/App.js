@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import './style/App.css';
+import {Route, Routes} from "react-router-dom";
+import FindMusicPage from "./pages/find";
+import MyMusicPage from "./pages/my";
+import FollowPage from "./pages/follow";
+import MallPage from "./pages/mall";
+import MusicianPage from "./pages/musician";
+import DownloadPage from "./pages/download";
+import NotFoundPage from "./pages/404";
+import AppHeader from "./components/app-header/AppHeader";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    return (
+        <div className="App">
+            <AppHeader/>
+            <Routes>
+                <Route path="/" element={<FindMusicPage/>}/>
+                <Route path="/myMusic" element={<MyMusicPage/>}/>
+                <Route path="/follow" element={<FollowPage/>}/>
+                <Route path="/mall" element={<MallPage/>}/>
+                <Route path="/musician" element={<MusicianPage/>}/>
+                <Route path="/download" element={<DownloadPage/>}/>
+                <Route path="*" element={<NotFoundPage/>}/>
+            </Routes>
+        </div>
+
+    );
 }
-
-export default App;
