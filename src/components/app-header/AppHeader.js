@@ -7,7 +7,7 @@ function AppHeader() {
     const headerLinks = [
         {
             title: '发现音乐',
-            link: '/',
+            link: '/discover',
         },
         {
             title: '我的音乐',

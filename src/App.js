@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./style/App.css";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, Navigate} from "react-router-dom";
 import FindMusicPage from "./pages/find";
 import MyMusicPage from "./pages/my";
 import FollowPage from "./pages/follow";
@@ -15,7 +15,8 @@ export default function App() {
         <div className="app">
             <AppHeader/>
             <Routes>
-                <Route path="/" element={<FindMusicPage/>}/>
+                <Route path="/" element={<Navigate to="/discover" />}/>
+                <Route path="/discover" element={<FindMusicPage/>}/>
                 <Route path="/mine" element={<MyMusicPage/>}/>
                 <Route path="/friend" element={<FollowPage/>}/>
                 <Route path="/mall" element={<MallPage/>}/>
