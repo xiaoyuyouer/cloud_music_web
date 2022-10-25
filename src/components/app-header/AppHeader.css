@@ -11,6 +11,8 @@
     width: 176px;
     height: 69px;
     background: url(../../assets/img/sprite_01.png);
+    display: inline-block;
+    margin-top: 5px;
 }
 
 .app-header-group {
