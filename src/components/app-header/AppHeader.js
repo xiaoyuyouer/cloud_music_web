@@ -54,9 +54,9 @@ function AppHeader() {
 
     return (
         <div className="app-header-main">
-            <h1>
+            <div>
                 <a href="/" className="app-header-logo"> </a>
-            </h1>
+            </div>
             <div className="app-header-group">
                 {headerLinks.map((item, index) => {
                     return headerItemView(item, index);
