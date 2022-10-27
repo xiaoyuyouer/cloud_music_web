@@ -19,21 +19,6 @@
     font-size: 14px;
 }
 
-.app-header-group:last-of-type {
-    position: relative;
-}
-
-.app-header-group:last-of-type:after {
-    position: absolute;
-    content: '';
-    width: 28px;
-    height: 19px;
-    background-image: url(../../assets/img/sprite_01.png);
-    background-position: -192px 0;
-    top: 20px;
-    right: -20px;
-}
-
 .app-header-item {
     position: relative;
     padding: 0 19px;
@@ -76,5 +61,20 @@
     background-image: url(../../assets/img/sprite_01.png);
     background-position: 254px 0;
 }
+
+/* hot标签 */
+.app-header-group:after {
+    position: relative;
+    content: '';
+    width: 28px;
+    height: 19px;
+    background-image: url(../../assets/img/sprite_01.png);
+    background-position: -192px 0;
+    top: 20px;
+    right: 6px;
+}
+
+
+
 
 
