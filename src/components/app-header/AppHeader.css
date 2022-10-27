@@ -17,6 +17,7 @@
 .app-header-group {
     display: flex;
     font-size: 14px;
+    font-weight: bold;
 }
 
 .app-header-item {
