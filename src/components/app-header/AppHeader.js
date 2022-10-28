@@ -2,8 +2,8 @@ import "./AppHeader.css"
 import {NavLink} from "react-router-dom";
 import {Input} from "antd";
 import {SearchOutlined} from '@ant-design/icons';
-import {get} from "../../api/net";
-import {API_SEARCH_SUGGEST} from "../../api/net-config";
+import {get} from "../../service/net";
+import {API_SEARCH_SUGGEST} from "../../service/net-config";
 
 
 function AppHeader() {
