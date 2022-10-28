@@ -2,6 +2,7 @@ import "./AppHeader.css"
 import {NavLink} from "react-router-dom";
 import {Input} from "antd";
 import {SearchOutlined} from '@ant-design/icons';
+import {searchSuggest} from "../../api/SearchAPI";
 
 
 function AppHeader() {
@@ -32,6 +33,17 @@ function AppHeader() {
             link: '/download',
         },
     ]
+
+    const login = () => {
+        console.log('点击登录')
+        searchSuggest({'keywords': 'eEE'}).then(r => {
+            console.log('走到了success')
+            console.log(r)
+        }, e => {
+            console.log('走到了error')
+            console.log(e)
+        })
+    };
 
     const headerItemView = (item, index) => {
         return (
@@ -73,7 +85,9 @@ function AppHeader() {
                 />
             </div>
             <div className="app-header-creator">创作者中心</div>
-            <div className="app-header-login">登录</div>
+            <div className="app-header-login"
+                 onClick={() => login()}>登录
+            </div>
         </div>
     )
 }
