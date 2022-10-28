@@ -2,7 +2,8 @@ import "./AppHeader.css"
 import {NavLink} from "react-router-dom";
 import {Input} from "antd";
 import {SearchOutlined} from '@ant-design/icons';
-import {searchSuggest} from "../../api/SearchAPI";
+import {get} from "../../api/net";
+import {API_SEARCH_SUGGEST} from "../../api/net-config";
 
 
 function AppHeader() {
@@ -36,7 +37,15 @@ function AppHeader() {
 
     const login = () => {
         console.log('点击登录')
-        searchSuggest({'keywords': 'eEE'}).then(r => {
+        get(API_SEARCH_SUGGEST, {'keywords': 'eEE'}).then(r => {
+            console.log('走到了success')
+            console.log(r)
+        }, e => {
+            console.log('走到了error')
+            console.log(e)
+        })
+
+        get(API_SEARCH_SUGGEST).then(r => {
             console.log('走到了success')
             console.log(r)
         }, e => {
