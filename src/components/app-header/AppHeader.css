@@ -76,13 +76,12 @@
 }
 
 .app-header-search-container {
-    position: relative;
     margin-left: 50px;
 }
 
-.app-header-search-input {
-    border-radius: 16px;
-    font-size: 12px;
+.app-header-search-content-container {
+    position: absolute;
+    margin-top: 10px;
 }
 
 /* ant搜索框去除蓝色边框 */
@@ -128,7 +127,6 @@
     cursor: pointer;
     text-decoration: underline;
 }
-
 
 
 

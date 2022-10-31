@@ -1,9 +1,9 @@
 import "./AppHeader.css"
 import {NavLink} from "react-router-dom";
-import {Input} from "antd";
-import {SearchOutlined} from '@ant-design/icons';
 import {get} from "../../service/net";
 import {API_SEARCH_SUGGEST} from "../../service/net-config";
+import SearchInput from "../app-search/SearchInput";
+import SearchContent from "../app-search/SearchContent";
 
 
 function AppHeader() {
@@ -86,12 +86,10 @@ function AppHeader() {
                 })}
             </div>
             <div className="app-header-search-container">
-                <Input
-                    className="app-header-search-input"
-                    placeholder="音乐/视频/电台/用户"
-                    size="large"
-                    prefix={<SearchOutlined/>}
-                />
+                <SearchInput/>
+                <div className="app-header-search-content-container">
+                    <SearchContent/>
+                </div>
             </div>
             <div className="app-header-creator">创作者中心</div>
             <div className="app-header-login"
