@@ -35,9 +35,9 @@ function SearchContent() {
     );
 
     return (
-        <div className="search-content">
-            <div className="search-title">
-                搜"b"相关用户
+        <div className="search-content-container">
+            <div className="search-header-container">
+                <span> 搜"b"相关用户</span>
                 <RightOutlined/>
             </div>
             <AppDivider/>
@@ -52,15 +52,15 @@ function SearchContent() {
                     </ul>
                 </div>
             </div>
-            {/*<div className="single-container">*/}
-            {/*    <div className="single-title">*/}
-            {/*        <img src={IconSingle} alt='' width={15}/>*/}
-            {/*        <span>歌手</span>*/}
-            {/*    </div>*/}
-            {/*    <div className="single-content" style={{backgroundColor:"#f7f7f7"}}>*/}
-            {/*        <span>{singer}</span>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+            <div className="single-container">
+                <div className="single-title">
+                    <img src={IconSingle} alt='' width={15}/>
+                    <span>歌手</span>
+                </div>
+                <div className="single-content" style={{backgroundColor: "#f7f7f7"}}>
+                    <span>{singer}</span>
+                </div>
+            </div>
             {/*<div className="single-container">*/}
             {/*    <div className="single-title">*/}
             {/*        <img src={IconSingle} alt='' width={15}/>*/}
