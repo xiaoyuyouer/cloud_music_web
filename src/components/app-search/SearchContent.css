@@ -16,9 +16,6 @@
 .search-item-container {
     display: flex;
     flex-direction: row;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .search-item-title {
@@ -34,4 +31,8 @@
     margin-left: 10px;
     padding: 10px 5px 10px 10px;
     color: black;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
