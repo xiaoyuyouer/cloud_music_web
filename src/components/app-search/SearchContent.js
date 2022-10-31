@@ -2,6 +2,7 @@ import "./SearchContent.css"
 
 import {RightOutlined} from "@ant-design/icons";
 import IconSingle from "../../assets/img/icon_single.png";
+import AppDivider from "../AppDivider";
 
 function SearchContent() {
 
@@ -39,7 +40,7 @@ function SearchContent() {
                 搜"b"相关用户
                 <RightOutlined/>
             </div>
-            <div style={{height: 1, backgroundColor: "#ccc"}}/>
+            <AppDivider/>
             <div className="single-container">
                 <div className="single-title">
                     <img src={IconSingle} alt='' width={15}/>
