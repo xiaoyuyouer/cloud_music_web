@@ -51,37 +51,37 @@ function SearchContent() {
                     </ul>
                 </div>
             </div>
-            <div className="single-container">
-                <div className="single-title">
-                    <img src={IconSingle} alt='' width={15}/>
-                    <span>歌手</span>
-                </div>
-                <div className="single-content" style={{backgroundColor:"#f7f7f7"}}>
-                    <span>{singer}</span>
-                </div>
-            </div>
-            <div className="single-container">
-                <div className="single-title">
-                    <img src={IconSingle} alt='' width={15}/>
-                    <span>专辑</span>
-                </div>
-                <div className="single-content">
-                    <ul>
-                        {album}
-                    </ul>
-                </div>
-            </div>
-            <div className="single-container">
-                <div className="single-title">
-                    <img src={IconSingle} alt='' width={15}/>
-                    <span>歌单</span>
-                </div>
-                <div className="single-content">
-                    <ul>
-                        {playList}
-                    </ul>
-                </div>
-            </div>
+            {/*<div className="single-container">*/}
+            {/*    <div className="single-title">*/}
+            {/*        <img src={IconSingle} alt='' width={15}/>*/}
+            {/*        <span>歌手</span>*/}
+            {/*    </div>*/}
+            {/*    <div className="single-content" style={{backgroundColor:"#f7f7f7"}}>*/}
+            {/*        <span>{singer}</span>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            {/*<div className="single-container">*/}
+            {/*    <div className="single-title">*/}
+            {/*        <img src={IconSingle} alt='' width={15}/>*/}
+            {/*        <span>专辑</span>*/}
+            {/*    </div>*/}
+            {/*    <div className="single-content">*/}
+            {/*        <ul>*/}
+            {/*            {album}*/}
+            {/*        </ul>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            {/*<div className="single-container">*/}
+            {/*    <div className="single-title">*/}
+            {/*        <img src={IconSingle} alt='' width={15}/>*/}
+            {/*        <span>歌单</span>*/}
+            {/*    </div>*/}
+            {/*    <div className="single-content">*/}
+            {/*        <ul>*/}
+            {/*            {playList}*/}
+            {/*        </ul>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     )
 }
