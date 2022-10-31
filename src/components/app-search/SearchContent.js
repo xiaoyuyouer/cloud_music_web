@@ -30,8 +30,8 @@ function SearchContent() {
         'R&B Type Beats/说唱伴奏',
     ];
 
-    const singleItems = singles.map((myList) =>
-        <li>{myList}</li>
+    const singleItems = singles.map((item) =>
+        <li key={item.toString()}>{item}</li>
     );
 
     return (
