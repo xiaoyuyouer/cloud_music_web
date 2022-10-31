@@ -41,23 +41,23 @@ function SearchContent() {
                 <RightOutlined/>
             </div>
             <AppDivider/>
-            <div className="single-container">
-                <div className="single-title">
+            <div className="search-item-container">
+                <div className="search-item-title">
                     <img src={IconSingle} alt='' width={15}/>
                     <span>单曲</span>
                 </div>
-                <div className="single-content">
+                <div className="search-item-info">
                     <ul>
                         {singleItems}
                     </ul>
                 </div>
             </div>
-            <div className="single-container">
-                <div className="single-title">
+            <div className="search-item-container">
+                <div className="search-item-title">
                     <img src={IconSingle} alt='' width={15}/>
                     <span>歌手</span>
                 </div>
-                <div className="single-content" style={{backgroundColor: "#f7f7f7"}}>
+                <div className="search-item-info" style={{backgroundColor: "#f7f7f7"}}>
                     <span>{singer}</span>
                 </div>
             </div>

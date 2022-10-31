@@ -13,7 +13,7 @@
     padding: 10px 5px 10px 10px;
 }
 
-.single-container {
+.search-item-container {
     display: flex;
     flex-direction: row;
     white-space: nowrap;
@@ -21,13 +21,13 @@
     text-overflow: ellipsis;
 }
 
-.single-title {
+.search-item-title {
     margin-top: 10px;
     margin-left: 8px;
     color: black;
 }
 
-.single-content {
+.search-item-info {
     display: flex;
     flex: 1;
     border-left: 1px solid #ccc;
