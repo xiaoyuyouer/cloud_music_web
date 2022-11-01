@@ -1,5 +1,4 @@
 .search-content-container {
-    width: 245px;
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -19,19 +18,21 @@
 }
 
 .search-item-title {
-    margin-top: 10px;
-    margin-left: 8px;
+    width: 60px;
     color: black;
+    padding-top: 10px;
+    padding-left: 10px;
 }
 
 .search-item-info {
-    display: flex;
-    flex: 1;
+    width: 185px;
     border-left: 1px solid #ccc;
-    margin-left: 10px;
-    padding: 10px 5px 10px 10px;
+    border-bottom: 1px solid #ccc;
     color: black;
+    padding: 10px 5px 10px 10px;
+}
 
+.search-li {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

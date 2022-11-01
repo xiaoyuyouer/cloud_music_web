@@ -31,7 +31,15 @@ function SearchContent() {
     ];
 
     const singleItems = singles.map((item) =>
-        <li key={item.toString()}>{item}</li>
+        <li key={item.toString()} className="search-li">{item}</li>
+    );
+
+    const albumItems = album.map((item) =>
+        <li key={item.toString()} className="search-li">{item}</li>
+    );
+
+    const playListItems = playList.map((item) =>
+        <li key={item.toString()} className="search-li">{item}</li>
     );
 
     return (
@@ -61,28 +69,28 @@ function SearchContent() {
                     <span>{singer}</span>
                 </div>
             </div>
-            {/*<div className="single-container">*/}
-            {/*    <div className="single-title">*/}
-            {/*        <img src={IconSingle} alt='' width={15}/>*/}
-            {/*        <span>专辑</span>*/}
-            {/*    </div>*/}
-            {/*    <div className="single-content">*/}
-            {/*        <ul>*/}
-            {/*            {album}*/}
-            {/*        </ul>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            {/*<div className="single-container">*/}
-            {/*    <div className="single-title">*/}
-            {/*        <img src={IconSingle} alt='' width={15}/>*/}
-            {/*        <span>歌单</span>*/}
-            {/*    </div>*/}
-            {/*    <div className="single-content">*/}
-            {/*        <ul>*/}
-            {/*            {playList}*/}
-            {/*        </ul>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+            <div className="search-item-container">
+                <div className="search-item-title">
+                    <img src={IconSingle} alt='' width={15}/>
+                    <span>专辑</span>
+                </div>
+                <div className="search-item-info">
+                    <ul>
+                        {albumItems}
+                    </ul>
+                </div>
+            </div>
+            <div className="search-item-container">
+                <div className="search-item-title">
+                    <img src={IconSingle} alt='' width={15}/>
+                    <span>歌单</span>
+                </div>
+                <div className="search-item-info" style={{backgroundColor: "#f7f7f7"}}>
+                    <ul>
+                        {playListItems}
+                    </ul>
+                </div>
+            </div>
         </div>
     )
 }
