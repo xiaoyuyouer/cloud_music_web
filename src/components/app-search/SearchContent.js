@@ -2,6 +2,9 @@ import "./SearchContent.css"
 
 import {RightOutlined} from "@ant-design/icons";
 import IconSingle from "../../assets/img/icon_single.png";
+import IconUser from "../../assets/img/icon_user.png";
+import IconAlbum from "../../assets/img/icon_album.png";
+import IconPlayList from "../../assets/img/icon_playlist.png";
 import AppDivider from "../AppDivider";
 
 function SearchContent() {
@@ -51,7 +54,7 @@ function SearchContent() {
             <AppDivider/>
             <div className="search-item-container">
                 <div className="search-item-title">
-                    <img src={IconSingle} alt='' width={15}/>
+                    <img src={IconSingle} alt='' width={15} style={{marginRight: 2}}/>
                     <span>单曲</span>
                 </div>
                 <div className="search-item-info">
@@ -62,7 +65,7 @@ function SearchContent() {
             </div>
             <div className="search-item-container">
                 <div className="search-item-title">
-                    <img src={IconSingle} alt='' width={15}/>
+                    <img src={IconUser} alt='' width={15} style={{marginRight: 2}}/>
                     <span>歌手</span>
                 </div>
                 <div className="search-item-info" style={{backgroundColor: "#f7f7f7"}}>
@@ -71,7 +74,7 @@ function SearchContent() {
             </div>
             <div className="search-item-container">
                 <div className="search-item-title">
-                    <img src={IconSingle} alt='' width={15}/>
+                    <img src={IconAlbum} alt='' width={15} style={{marginRight: 2}}/>
                     <span>专辑</span>
                 </div>
                 <div className="search-item-info">
@@ -82,7 +85,7 @@ function SearchContent() {
             </div>
             <div className="search-item-container">
                 <div className="search-item-title">
-                    <img src={IconSingle} alt='' width={15}/>
+                    <img src={IconPlayList} alt='' width={15} style={{marginRight: 2}}/>
                     <span>歌单</span>
                 </div>
                 <div className="search-item-info" style={{backgroundColor: "#f7f7f7"}}>
