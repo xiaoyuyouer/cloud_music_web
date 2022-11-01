@@ -3,7 +3,7 @@ import {SearchOutlined} from "@ant-design/icons";
 import "./SearchInput.css"
 
 // 引入相关的hooks
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 // 引入对应的方法
 import {showDialog} from '../../store/festures/headerSlice';
 
