@@ -4,6 +4,7 @@ import {get} from "../../service/net";
 import {API_SEARCH_SUGGEST} from "../../service/net-config";
 import SearchInput from "../app-search/SearchInput";
 import SearchContent from "../app-search/SearchContent";
+import {useSelector} from 'react-redux';
 
 
 function AppHeader() {
@@ -35,7 +36,7 @@ function AppHeader() {
         },
     ]
 
-    const focusState = false;
+    const {isShowDialog} = useSelector((store) => store.header)
 
     const login = () => {
         console.log('点击登录')
@@ -55,6 +56,7 @@ function AppHeader() {
             console.log(e)
         })
     };
+
 
     const headerItemView = (item, index) => {
         return (
@@ -90,7 +92,7 @@ function AppHeader() {
             <div className="app-header-search-container">
                 <SearchInput/>
                 <div className="app-header-search-content-container"
-                     style={{display: focusState ? 'block' : 'none'}}>
+                     style={{display: isShowDialog ? 'block' : 'none'}}>
                     <SearchContent/>
                 </div>
             </div>
