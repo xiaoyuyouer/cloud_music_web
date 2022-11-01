@@ -35,6 +35,8 @@ function AppHeader() {
         },
     ]
 
+    const focusState = false;
+
     const login = () => {
         console.log('点击登录')
         get(API_SEARCH_SUGGEST, {'keywords': 'eEE'}).then(r => {
@@ -87,7 +89,8 @@ function AppHeader() {
             </div>
             <div className="app-header-search-container">
                 <SearchInput/>
-                <div className="app-header-search-content-container">
+                <div className="app-header-search-content-container"
+                     style={{display: focusState ? 'block' : 'none'}}>
                     <SearchContent/>
                 </div>
             </div>
