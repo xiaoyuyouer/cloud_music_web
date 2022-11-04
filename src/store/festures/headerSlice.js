@@ -43,11 +43,11 @@ export const headerSlice = createSlice({
                 console.log("🚀 ~ 进行中！")
             })
             .addCase(searchSuggest.fulfilled, (state, {payload}) => {
-                console.log("🚀 ~ fulfilled", payload);
+                console.log("🚀 ~ 请求完成！", payload);
                 state.result = payload;
             })
             .addCase(searchSuggest.rejected, (state, e) => {
-                console.log("🚀 ~ rejected", e.payload)
+                console.log("🚀 ~ 请求失败！", e.payload)
             });
     },
 
