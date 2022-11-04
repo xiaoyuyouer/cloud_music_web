@@ -51,7 +51,7 @@ function AppHeader() {
         get(API_SEARCH_SUGGEST).then(r => {
             console.log('走到了success')
             console.log(r)
-        }, e => {
+        }).catch(e => {
             console.log('走到了error')
             console.log(e)
         })

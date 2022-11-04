@@ -13,10 +13,16 @@ const initialState = {
 ///关键字搜索
 export const searchSuggest = createAsyncThunk(
     'search/suggest',
-    async () => {
-        return await get(
-            API_SEARCH_SUGGEST, {'keywords': 'eEE'}
-        )
+    async (key, {rejectWithValue}) => {
+        try {
+            const response = await get(
+                API_SEARCH_SUGGEST, {'keywords': key}
+            );
+            return response;
+        } catch (err) {
+            return rejectWithValue(err)
+        }
+
     }
 )
 
@@ -28,10 +34,6 @@ export const headerSlice = createSlice({
         showDialog: (state, {payload}) => {
             state.isShowDialog = payload.isShowDialog;
             console.log(state.isShowDialog);
-        },
-        searchKey: (state, {payload}) => {
-            state.key = payload.key;
-            console.log(state.key);
         },
     },
 
@@ -45,12 +47,12 @@ export const headerSlice = createSlice({
                 state.result = payload;
             })
             .addCase(searchSuggest.rejected, (state, err) => {
-                console.log("🚀 ~ rejected", err)
+                console.log("🚀 ~ rejected", err.payload)
             });
     },
 
 });
 
-export const {showDialog, searchKey,} = headerSlice.actions;
+export const {showDialog,} = headerSlice.actions;
 
 export default headerSlice.reducer;
