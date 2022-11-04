@@ -18,9 +18,9 @@ export const searchSuggest = createAsyncThunk(
             const response = await get(
                 API_SEARCH_SUGGEST, {'keywords': key}
             );
-            return response;
-        } catch (err) {
-            return rejectWithValue(err)
+            return response.result;
+        } catch (e) {
+            return rejectWithValue(e)
         }
 
     }
@@ -46,8 +46,8 @@ export const headerSlice = createSlice({
                 console.log("🚀 ~ fulfilled", payload);
                 state.result = payload;
             })
-            .addCase(searchSuggest.rejected, (state, err) => {
-                console.log("🚀 ~ rejected", err.payload)
+            .addCase(searchSuggest.rejected, (state, e) => {
+                console.log("🚀 ~ rejected", e.payload)
             });
     },
 
