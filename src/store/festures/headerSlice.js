@@ -4,19 +4,19 @@ import {API_SEARCH_SUGGEST} from "../../service/net-config";
 
 const initialState = {
     //是否展示搜索结果弹窗
-    isShowDialog: false,
+    isShowSearch: false,
     //搜索的关键字
-    key: "",
+    searchKey: "",
     result: {},
 };
 
 ///关键字搜索
 export const searchSuggest = createAsyncThunk(
     'search/suggest',
-    async (key, {rejectWithValue}) => {
+    async (searchKey, {rejectWithValue}) => {
         try {
             const response = await get(
-                API_SEARCH_SUGGEST, {'keywords': key}
+                API_SEARCH_SUGGEST, {'keywords': searchKey}
             );
             return response.result;
         } catch (e) {
@@ -31,9 +31,11 @@ export const headerSlice = createSlice({
     name: "header",
     initialState,
     reducers: {
-        showDialog: (state, {payload}) => {
-            state.isShowDialog = payload.isShowDialog;
-            console.log(state.isShowDialog);
+        setSearchKey: (state, {payload}) => {
+            state.searchKey = payload.searchKey;
+        },
+        setShowSearch: (state, {payload}) => {
+            state.isShowSearch = payload.isShowSearch;
         },
     },
 
@@ -53,6 +55,6 @@ export const headerSlice = createSlice({
 
 });
 
-export const {showDialog,} = headerSlice.actions;
+export const {setSearchKey, setShowSearch,} = headerSlice.actions;
 
 export default headerSlice.reducer;

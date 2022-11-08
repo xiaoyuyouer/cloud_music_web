@@ -5,22 +5,21 @@ import "./SearchInput.css"
 // 引入相关的hooks
 import {useDispatch,} from 'react-redux';
 // 引入对应的方法
-import {searchSuggest, showDialog} from '../../store/festures/headerSlice';
+import {searchSuggest, setSearchKey, setShowSearch} from '../../store/festures/headerSlice';
 
 function SearchInput() {
 
     const dispatch = useDispatch()
 
     const onChange = (e) => {
-        let char = e.target.value;
-        if (char.length > 0) {
-            dispatch(showDialog({isShowDialog: true}));
+        let key = e.target.value;
+        dispatch(setSearchKey({searchKey: key}));
+        if (key.length > 0) {
+            dispatch(setShowSearch({isShowSearch: true}));
+            dispatch(searchSuggest(key));
         } else {
-            dispatch(showDialog({isShowDialog: false}));
+            dispatch(setShowSearch({isShowSearch: false}));
         }
-
-        dispatch(searchSuggest(char));
-
     };
 
     return (
