@@ -13,12 +13,24 @@ function SearchContent() {
 
     const artist = artists[0].name
 
-    const songsItems = songs.map((item) =>
-        <li key={item.toString()} className="search-li">{item.name}</li>
+    const songsItems = songs.map((item) => {
+            const name = item.name;
+            let artist = "";
+            item.artists.forEach((item) => {
+                artist = artist + " " + item.name;
+            });
+
+            const itemName = name + "-" + artist;
+            return <li key={item.toString()} className="search-li">{itemName}</li>;
+        }
     );
 
-    const albumItems = albums.map((item) =>
-        <li key={item.toString()} className="search-li">{item.name}</li>
+    const albumItems = albums.map((item) => {
+            const name = item.name;
+            const artist = item.artist.name;
+            const itemName = name + "-" + artist;
+            return <li key={item.toString()} className="search-li">{itemName}</li>;
+        }
     );
 
 
