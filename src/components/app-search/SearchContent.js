@@ -6,19 +6,13 @@ import IconUser from "../../assets/img/icon_user.png";
 import IconAlbum from "../../assets/img/icon_album.png";
 import AppDivider from "../AppDivider";
 import {useSelector} from 'react-redux';
+import {warpTag} from "../../utils/utils";
 
 function SearchContent() {
 
     const {searchKey, songs, artists, albums} = useSelector((store) => store.header)
 
-    const artistItems = artists.map((item, index) => {
-            const artist = artists[0].name
-            return <li key={index} className="search-li">
-                <span dangerouslySetInnerHTML={{__html: warpTag(artist, searchKey, "span")}}></span>
-            </li>;
-        }
-    );
-
+    //单曲
     const songsItems = songs.map((item, index) => {
             const name = item.name;
             let artist = "";
@@ -33,6 +27,16 @@ function SearchContent() {
         }
     );
 
+    //歌手
+    const artistItems = artists.map((item, index) => {
+            const artist = artists[0].name
+            return <li key={index} className="search-li">
+                <span dangerouslySetInnerHTML={{__html: warpTag(artist, searchKey, "span")}}></span>
+            </li>;
+        }
+    );
+
+    //专辑
     const albumItems = albums.map((item, index) => {
             const name = item.name;
             const artist = item.artist.name;
@@ -43,34 +47,11 @@ function SearchContent() {
         }
     );
 
-
-    /**
-     * 关键字变色
-     * @params content 内容
-     * @params keyword 关键词
-     * @params tagName 标签名
-     */
-    function warpTag(content, keyword, tagName) {
-        if (content === "No results") {
-            return content
+    const songsWidget = () => {
+        if (songs.length === 0) {
+            return <div/>;
         }
-        const a = content.toLowerCase()
-        const b = keyword.toLowerCase()
-
-        const indexOf = a.indexOf(b)
-        const c = indexOf > -1 ? content.substr(indexOf, keyword.length) : ''
-        const val = `<${tagName} style="color:#0c73c2;">${c}</${tagName}>`
-        const regS = new RegExp(keyword, 'gi')
-        return content.replace(regS, val)
-    }
-
-    return (
-        <div className="search-content-container">
-            <div className="search-header-container">
-                <span className="search-header-key"> 搜"{searchKey}"相关用户</span>
-                <RightOutlined/>
-            </div>
-            <AppDivider/>
+        return (
             <div className="search-item-container">
                 <div className="search-item-title">
                     <img src={IconSingle} alt='' className="search-item-title-image"/>
@@ -82,6 +63,14 @@ function SearchContent() {
                     </ul>
                 </div>
             </div>
+        );
+    }
+
+    const artistWidget = () => {
+        if (artists.length === 0) {
+            return <div/>;
+        }
+        return (
             <div className="search-item-container">
                 <div className="search-item-title">
                     <img src={IconUser} alt='' className="search-item-title-image"/>
@@ -93,6 +82,14 @@ function SearchContent() {
                     </ul>
                 </div>
             </div>
+        )
+    }
+
+    const albumWidget = () => {
+        if (albums.length === 0) {
+            return <div/>;
+        }
+        return (
             <div className="search-item-container">
                 <div className="search-item-title">
                     <img src={IconAlbum} alt='' className="search-item-title-image"/>
@@ -104,6 +101,19 @@ function SearchContent() {
                     </ul>
                 </div>
             </div>
+        )
+    }
+
+    return (
+        <div className="search-content-container">
+            <div className="search-header-container">
+                <span className="search-header-key"> 搜"{searchKey}"相关用户</span>
+                <RightOutlined/>
+            </div>
+            <AppDivider/>
+            {songsWidget()}
+            {artistWidget()}
+            {albumWidget()}
         </div>
     )
 }
