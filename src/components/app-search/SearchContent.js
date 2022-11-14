@@ -4,51 +4,28 @@ import {RightOutlined} from "@ant-design/icons";
 import IconSingle from "../../assets/img/icon_single.png";
 import IconUser from "../../assets/img/icon_user.png";
 import IconAlbum from "../../assets/img/icon_album.png";
-import IconPlayList from "../../assets/img/icon_playlist.png";
 import AppDivider from "../AppDivider";
+import {useSelector} from 'react-redux';
 
 function SearchContent() {
 
-    //单曲
-    const singles = [
-        '我-把灯墩柱',
-        'Japanese princess to wed commoner.',
-        'Australian walks 100km after outback crash.',
-        'Man charged over missing wedding girl.',
-        'Los Angeles battles huge wildfires.',
-    ];
+    const {searchKey, songs, artists, albums} = useSelector((store) => store.header)
 
-    //歌手
-    const singer = "Beyond"
+    const artist = artists[0].name
 
-    //专辑
-    const album = [
-        '把回忆拼好给你',
-        'Beyond 25th Au',
-    ];
-
-    //歌单
-    const playList = [
-        '美国Billboard榜',
-        'R&B Type Beats/说唱伴奏',
-    ];
-
-    const singleItems = singles.map((item) =>
-        <li key={item.toString()} className="search-li">{item}</li>
+    const songsItems = songs.map((item) =>
+        <li key={item.toString()} className="search-li">{item.name}</li>
     );
 
-    const albumItems = album.map((item) =>
-        <li key={item.toString()} className="search-li">{item}</li>
+    const albumItems = albums.map((item) =>
+        <li key={item.toString()} className="search-li">{item.name}</li>
     );
 
-    const playListItems = playList.map((item) =>
-        <li key={item.toString()} className="search-li">{item}</li>
-    );
 
     return (
         <div className="search-content-container">
             <div className="search-header-container">
-                <span> 搜"b"相关用户</span>
+                <span> 搜"{searchKey}"相关用户</span>
                 <RightOutlined/>
             </div>
             <AppDivider/>
@@ -59,7 +36,7 @@ function SearchContent() {
                 </div>
                 <div className="search-item-info">
                     <ul>
-                        {singleItems}
+                        {songsItems}
                     </ul>
                 </div>
             </div>
@@ -69,7 +46,7 @@ function SearchContent() {
                     <span>歌手</span>
                 </div>
                 <div className="search-item-info" style={{backgroundColor: "#f7f7f7"}}>
-                    <span>{singer}</span>
+                    <span>{artist}</span>
                 </div>
             </div>
             <div className="search-item-container">
@@ -80,17 +57,6 @@ function SearchContent() {
                 <div className="search-item-info">
                     <ul>
                         {albumItems}
-                    </ul>
-                </div>
-            </div>
-            <div className="search-item-container">
-                <div className="search-item-title">
-                    <img src={IconPlayList} alt='' width={15} style={{marginRight: 2}}/>
-                    <span>歌单</span>
-                </div>
-                <div className="search-item-info" style={{backgroundColor: "#f7f7f7"}}>
-                    <ul>
-                        {playListItems}
                     </ul>
                 </div>
             </div>

@@ -7,7 +7,12 @@ const initialState = {
     isShowSearch: false,
     //搜索的关键字
     searchKey: "",
-    result: {},
+    //单曲
+    songs:[],
+    //歌手
+    artists:[],
+    //专辑
+    albums:[],
 };
 
 ///关键字搜索
@@ -46,7 +51,9 @@ export const headerSlice = createSlice({
             })
             .addCase(searchSuggest.fulfilled, (state, {payload}) => {
                 console.log("🚀 ~ 请求完成！", payload);
-                state.result = payload;
+                state.songs = payload.songs;
+                state.artists = payload.artists;
+                state.albums = payload.albums;
             })
             .addCase(searchSuggest.rejected, (state, e) => {
                 console.log("🚀 ~ 请求失败！", e.payload)

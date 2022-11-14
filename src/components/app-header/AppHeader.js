@@ -36,7 +36,7 @@ function AppHeader() {
         },
     ]
 
-    const {isShowDialog} = useSelector((store) => store.header)
+    const {isShowSearch} = useSelector((store) => store.header)
 
     const login = () => {
         console.log('点击登录')
@@ -92,7 +92,7 @@ function AppHeader() {
             <div className="app-header-search-container">
                 <SearchInput/>
                 <div className="app-header-search-content-container"
-                     style={{display: isShowDialog ? 'block' : 'none'}}>
+                     style={{display: isShowSearch ? 'block' : 'none'}}>
                     <SearchContent/>
                 </div>
             </div>
