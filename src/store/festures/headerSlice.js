@@ -8,11 +8,11 @@ const initialState = {
     //搜索的关键字
     searchKey: "",
     //单曲
-    songs:[],
+    songs: [],
     //歌手
-    artists:[],
+    artists: [],
     //专辑
-    albums:[],
+    albums: [],
 };
 
 ///关键字搜索
@@ -51,9 +51,9 @@ export const headerSlice = createSlice({
             })
             .addCase(searchSuggest.fulfilled, (state, {payload}) => {
                 console.log("🚀 ~ 请求完成！", payload);
-                state.songs = payload.songs;
-                state.artists = payload.artists;
-                state.albums = payload.albums;
+                state.songs = payload.songs ?? [];
+                state.artists = payload.artists ?? [];
+                state.albums = payload.albums ?? [];
             })
             .addCase(searchSuggest.rejected, (state, e) => {
                 console.log("🚀 ~ 请求失败！", e.payload)
