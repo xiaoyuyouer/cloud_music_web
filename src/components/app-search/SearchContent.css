@@ -12,6 +12,11 @@
     padding: 10px 5px 10px 10px;
 }
 
+.search-header-key:hover {
+    background-color: #d3d3d3;
+    cursor: pointer;
+}
+
 .search-item-container {
     display: flex;
     flex-direction: row;
@@ -20,8 +25,13 @@
 .search-item-title {
     width: 60px;
     color: black;
-    padding-top: 10px;
     padding-left: 10px;
+    padding-top: 8px;
+}
+
+.search-item-title-image {
+    width: 15px;
+    margin-right: 2px;
 }
 
 .search-item-info {
@@ -29,11 +39,29 @@
     border-left: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     color: black;
-    padding: 10px 5px 10px 10px;
+}
+
+.search-item-info-f7 {
+    width: 185px;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    color: black;
+    background-color: #f7f7f7;
+}
+
+.search-ul {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .search-li {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 3px 3px 3px 8px;
+}
+
+.search-li:hover {
+    background-color: #d3d3d3;
+    cursor: pointer;
 }

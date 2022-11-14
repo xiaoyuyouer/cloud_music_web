@@ -11,7 +11,11 @@ function SearchContent() {
 
     const {searchKey, songs, artists, albums} = useSelector((store) => store.header)
 
-    const artist = artists[0].name
+    const artistItems = artists.map((item) => {
+            const artist = artists[0].name
+            return <li key={item.toString()} className="search-li">{artist}</li>;
+        }
+    );
 
     const songsItems = songs.map((item) => {
             const name = item.name;
@@ -37,37 +41,39 @@ function SearchContent() {
     return (
         <div className="search-content-container">
             <div className="search-header-container">
-                <span> 搜"{searchKey}"相关用户</span>
+                <span className="search-header-key"> 搜"{searchKey}"相关用户</span>
                 <RightOutlined/>
             </div>
             <AppDivider/>
             <div className="search-item-container">
                 <div className="search-item-title">
-                    <img src={IconSingle} alt='' width={15} style={{marginRight: 2}}/>
+                    <img src={IconSingle} alt='' className="search-item-title-image"/>
                     <span>单曲</span>
                 </div>
                 <div className="search-item-info">
-                    <ul>
+                    <ul className="search-ul">
                         {songsItems}
                     </ul>
                 </div>
             </div>
             <div className="search-item-container">
                 <div className="search-item-title">
-                    <img src={IconUser} alt='' width={15} style={{marginRight: 2}}/>
+                    <img src={IconUser} alt='' className="search-item-title-image"/>
                     <span>歌手</span>
                 </div>
-                <div className="search-item-info" style={{backgroundColor: "#f7f7f7"}}>
-                    <span>{artist}</span>
+                <div className="search-item-info-f7">
+                    <ul className="search-ul">
+                        {artistItems}
+                    </ul>
                 </div>
             </div>
             <div className="search-item-container">
                 <div className="search-item-title">
-                    <img src={IconAlbum} alt='' width={15} style={{marginRight: 2}}/>
+                    <img src={IconAlbum} alt='' className="search-item-title-image"/>
                     <span>专辑</span>
                 </div>
                 <div className="search-item-info">
-                    <ul>
+                    <ul className="search-ul">
                         {albumItems}
                     </ul>
                 </div>
