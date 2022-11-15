@@ -113,9 +113,11 @@ function SearchContent() {
             </div>
             <AppDivider/>
             <Spin spinning={isSearching}>
-                {songsWidget()}
-                {artistWidget()}
-                {albumWidget()}
+                <div className="search-content-loading">
+                    {songsWidget()}
+                    {artistWidget()}
+                    {albumWidget()}
+                </div>
             </Spin>
         </div>
     )

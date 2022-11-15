@@ -8,6 +8,11 @@
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
+.search-content-loading {
+    min-width: 185px;
+    min-height: 120px;
+}
+
 .search-header-container {
     padding: 10px 5px 10px 10px;
 }

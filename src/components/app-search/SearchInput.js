@@ -5,7 +5,7 @@ import "./SearchInput.css"
 // 引入相关的hooks
 import {useDispatch,} from 'react-redux';
 // 引入对应的方法
-import {searchSuggest, setSearchKey, setShowSearch} from '../../store/festures/headerSlice';
+import {searchSuggest, setSearchKey, setShowSearch, clearData} from '../../store/festures/headerSlice';
 
 function SearchInput() {
 
@@ -19,6 +19,7 @@ function SearchInput() {
             dispatch(searchSuggest(key));
         } else {
             dispatch(setShowSearch({isShowSearch: false}));
+            dispatch(clearData());
         }
     };
 

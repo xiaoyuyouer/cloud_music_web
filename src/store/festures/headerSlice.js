@@ -8,7 +8,7 @@ const initialState = {
     //搜索的关键字
     searchKey: "",
     //正在搜索
-    isSearching:false,
+    isSearching: false,
     //单曲
     songs: [],
     //歌手
@@ -44,6 +44,11 @@ export const headerSlice = createSlice({
         setShowSearch: (state, {payload}) => {
             state.isShowSearch = payload.isShowSearch;
         },
+        clearData: (state, {payload}) => {
+            state.songs = [];
+            state.artists = [];
+            state.albums = [];
+        },
     },
 
     extraReducers(builder) {
@@ -67,6 +72,6 @@ export const headerSlice = createSlice({
 
 });
 
-export const {setSearchKey, setShowSearch,} = headerSlice.actions;
+export const {setSearchKey, setShowSearch, clearData} = headerSlice.actions;
 
 export default headerSlice.reducer;
