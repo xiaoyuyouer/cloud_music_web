@@ -45,7 +45,7 @@ function AppHeader() {
 
 
     const login = () => {
-        dispatch(setShowLogin({isShowLogin: !isShowLogin}))
+        dispatch(setShowLogin({isShowLogin: true}))
     };
 
     const closeLoginModal = () => {
