@@ -11,7 +11,7 @@ import {Spin} from 'antd';
 
 function SearchContent() {
 
-    const {searchKey, isSearching, songs, artists, albums} = useSelector((store) => store.header)
+    const {searchKey, isSearching, isEmpty, songs, artists, albums} = useSelector((store) => store.header)
 
     //单曲
     const songsItems = songs.map((item, index) => {
@@ -120,7 +120,7 @@ function SearchContent() {
                 </div>
             </Spin>
         </div>
-    )
+    );
 }
 
 export default SearchContent

@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {get} from "../../service/net";
-import {API_SEARCH_SUGGEST} from "../../service/net-config";
+import {get} from "../../../service/net";
+import {API_SEARCH_SUGGEST} from "../../../service/net-config";
+import {isEmptyObject} from "../../../utils/utils";
 
 const initialState = {
     //是否展示搜索结果弹窗
@@ -9,6 +10,8 @@ const initialState = {
     searchKey: "",
     //正在搜索
     isSearching: false,
+    //数据是否为空
+    isEmpty: false,
     //单曲
     songs: [],
     //歌手
@@ -33,7 +36,7 @@ export const searchSuggest = createAsyncThunk(
     }
 )
 
-export const headerSlice = createSlice({
+export const searchSlice = createSlice({
     // app header redux
     name: "header",
     initialState,
@@ -60,6 +63,7 @@ export const headerSlice = createSlice({
             .addCase(searchSuggest.fulfilled, (state, {payload}) => {
                 console.log("🚀 ~ 请求完成！", payload);
                 state.isSearching = false;
+                state.isEmpty = isEmptyObject(payload);
                 state.songs = payload.songs ?? [];
                 state.artists = payload.artists ?? [];
                 state.albums = payload.albums ?? [];
@@ -67,11 +71,12 @@ export const headerSlice = createSlice({
             .addCase(searchSuggest.rejected, (state, e) => {
                 console.log("🚀 ~ 请求失败！", e.payload)
                 state.isSearching = false;
+                state.isEmpty = true;
             });
     },
 
 });
 
-export const {setSearchKey, setShowSearch, clearData} = headerSlice.actions;
+export const {setSearchKey, setShowSearch, clearData} = searchSlice.actions;
 
-export default headerSlice.reducer;
+export default searchSlice.reducer;
