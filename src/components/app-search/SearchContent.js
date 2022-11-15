@@ -7,10 +7,11 @@ import IconAlbum from "../../assets/img/icon_album.png";
 import AppDivider from "../AppDivider";
 import {useSelector} from 'react-redux';
 import {warpTag} from "../../utils/utils";
+import {Spin} from 'antd';
 
 function SearchContent() {
 
-    const {searchKey, songs, artists, albums} = useSelector((store) => store.header)
+    const {searchKey, isSearching, songs, artists, albums} = useSelector((store) => store.header)
 
     //单曲
     const songsItems = songs.map((item, index) => {
@@ -111,9 +112,11 @@ function SearchContent() {
                 <RightOutlined/>
             </div>
             <AppDivider/>
-            {songsWidget()}
-            {artistWidget()}
-            {albumWidget()}
+            <Spin spinning={isSearching}>
+                {songsWidget()}
+                {artistWidget()}
+                {albumWidget()}
+            </Spin>
         </div>
     )
 }

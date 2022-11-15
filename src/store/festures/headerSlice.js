@@ -7,6 +7,8 @@ const initialState = {
     isShowSearch: false,
     //搜索的关键字
     searchKey: "",
+    //正在搜索
+    isSearching:false,
     //单曲
     songs: [],
     //歌手
@@ -48,15 +50,18 @@ export const headerSlice = createSlice({
         builder
             .addCase(searchSuggest.pending, (state) => {
                 console.log("🚀 ~ 进行中！")
+                state.isSearching = true;
             })
             .addCase(searchSuggest.fulfilled, (state, {payload}) => {
                 console.log("🚀 ~ 请求完成！", payload);
+                state.isSearching = false;
                 state.songs = payload.songs ?? [];
                 state.artists = payload.artists ?? [];
                 state.albums = payload.albums ?? [];
             })
             .addCase(searchSuggest.rejected, (state, e) => {
                 console.log("🚀 ~ 请求失败！", e.payload)
+                state.isSearching = false;
             });
     },
 
