@@ -1,10 +1,11 @@
 import "./AppHeader.css"
 import {NavLink} from "react-router-dom";
-import {get} from "../../service/net";
-import {API_SEARCH_SUGGEST} from "../../service/net-config";
 import SearchInput from "../app-search/SearchInput";
 import SearchContent from "../app-search/SearchContent";
 import {useSelector} from 'react-redux';
+import {Modal} from "antd";
+import {useState} from "react";
+import LoginModal from "../../pages/login/LoginModal";
 
 
 function AppHeader() {
@@ -38,23 +39,13 @@ function AppHeader() {
 
     const {isShowSearch} = useSelector((store) => store.header)
 
+
+    const [isModalOpen, setModalOpen] = useState(false);
+
     const login = () => {
         console.log('点击登录')
-        get(API_SEARCH_SUGGEST, {'keywords': 'eEE'}).then(r => {
-            console.log('走到了success')
-            console.log(r)
-        }, e => {
-            console.log('走到了error')
-            console.log(e)
-        })
+        setModalOpen(!isModalOpen)
 
-        get(API_SEARCH_SUGGEST).then(r => {
-            console.log('走到了success')
-            console.log(r)
-        }).catch(e => {
-            console.log('走到了error')
-            console.log(e)
-        })
     };
 
 
@@ -79,6 +70,7 @@ function AppHeader() {
         );
     };
 
+
     return (
         <div className="app-header-container">
             <div>
@@ -100,6 +92,16 @@ function AppHeader() {
             <div className="app-header-login"
                  onClick={() => login()}>登录
             </div>
+            <Modal
+                open={isModalOpen}
+                footer={null}
+                onCancel={() => setModalOpen(false)}
+                centered
+                closable={false}
+                bodyStyle={{padding: "0"}}
+            >
+                <LoginModal/>
+            </Modal>
         </div>
     )
 }

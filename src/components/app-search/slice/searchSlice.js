@@ -37,7 +37,6 @@ export const searchSuggest = createAsyncThunk(
 )
 
 export const searchSlice = createSlice({
-    // app header redux
     name: "header",
     initialState,
     reducers: {

@@ -1,11 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit'
-import counterSlice from "./festures/counterSlice.js";
 import headerSlice from "../components/app-search/slice/searchSlice.js";
+import loginSlice from "../pages/login/slice/loginSlice";
 
 const store = configureStore({
     reducer: {
-        counter: counterSlice,
         header: headerSlice,
+        login: loginSlice
     }
 })
 
