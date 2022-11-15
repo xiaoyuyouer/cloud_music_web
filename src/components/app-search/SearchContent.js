@@ -7,7 +7,7 @@ import IconAlbum from "../../assets/img/icon_album.png";
 import AppDivider from "../AppDivider";
 import {useSelector} from 'react-redux';
 import {warpTag} from "../../utils/utils";
-import {Spin} from 'antd';
+import {Spin, Empty} from 'antd';
 
 function SearchContent() {
 
@@ -105,6 +105,23 @@ function SearchContent() {
         )
     }
 
+    const contentWidget = () => {
+        if (isEmpty) {
+            return (
+              <div className="search-content-empty">
+                  <Empty/>
+              </div>
+            )
+        }
+        return (
+            <div className="search-content-table">
+                {songsWidget()}
+                {artistWidget()}
+                {albumWidget()}
+            </div>
+        );
+    }
+
     return (
         <div className="search-content-container">
             <div className="search-header-container">
@@ -113,11 +130,7 @@ function SearchContent() {
             </div>
             <AppDivider/>
             <Spin spinning={isSearching}>
-                <div className="search-content-loading">
-                    {songsWidget()}
-                    {artistWidget()}
-                    {albumWidget()}
-                </div>
+                {contentWidget()}
             </Spin>
         </div>
     );

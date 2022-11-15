@@ -8,8 +8,16 @@
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-.search-content-loading {
-    min-width: 185px;
+.search-content-empty {
+    width: 245px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-content-table {
+    min-width: 245px;
     min-height: 120px;
 }
 
