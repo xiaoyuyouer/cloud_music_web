@@ -44,7 +44,7 @@ function AppHeader() {
     const {isShowLogin} = useSelector((store) => store.login)
 
 
-    const login = () => {
+    const clickLogin = () => {
         dispatch(setShowLogin({isShowLogin: true}))
     };
 
@@ -94,7 +94,7 @@ function AppHeader() {
             </div>
             <div className="app-header-creator">创作者中心</div>
             <div className="app-header-login"
-                 onClick={() => login()}>登录
+                 onClick={() => clickLogin()}>登录
             </div>
             <Modal
                 open={isShowLogin}
