@@ -4,8 +4,9 @@ import SearchInput from "../app-search/SearchInput";
 import SearchContent from "../app-search/SearchContent";
 import {useSelector} from 'react-redux';
 import {Modal} from "antd";
-import {useState} from "react";
 import LoginModal from "../../pages/login/LoginModal";
+import {useDispatch,} from 'react-redux';
+import {setShowLogin} from "../../pages/login/slice/loginSlice";
 
 
 function AppHeader() {
@@ -37,16 +38,19 @@ function AppHeader() {
         },
     ]
 
+
+    const dispatch = useDispatch()
     const {isShowSearch} = useSelector((store) => store.header)
+    const {isShowLogin} = useSelector((store) => store.login)
 
-
-    const [isModalOpen, setModalOpen] = useState(false);
 
     const login = () => {
-        console.log('点击登录')
-        setModalOpen(!isModalOpen)
-
+        dispatch(setShowLogin({isShowLogin: !isShowLogin}))
     };
+
+    const closeLoginModal = () => {
+        dispatch(setShowLogin({isShowLogin: false}))
+    }
 
 
     const headerItemView = (item, index) => {
@@ -93,9 +97,9 @@ function AppHeader() {
                  onClick={() => login()}>登录
             </div>
             <Modal
-                open={isModalOpen}
+                open={isShowLogin}
                 footer={null}
-                onCancel={() => setModalOpen(false)}
+                onCancel={closeLoginModal}
                 centered
                 closable={false}
                 bodyStyle={{padding: "0"}}
