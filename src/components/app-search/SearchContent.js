@@ -4,7 +4,7 @@ import {RightOutlined} from "@ant-design/icons";
 import IconSingle from "../../assets/img/icon_single.png";
 import IconUser from "../../assets/img/icon_user.png";
 import IconAlbum from "../../assets/img/icon_album.png";
-import AppDivider from "../AppDivider";
+import MDivider from "../MDivider";
 import {useSelector} from 'react-redux';
 import {warpTag} from "../../utils/utils";
 import {Spin, Empty} from 'antd';
@@ -128,7 +128,7 @@ function SearchContent() {
                 <span className="search-header-key"> 搜"{searchKey}"相关用户</span>
                 <RightOutlined/>
             </div>
-            <AppDivider/>
+            <MDivider/>
             <Spin spinning={isSearching}>
                 {contentWidget()}
             </Spin>

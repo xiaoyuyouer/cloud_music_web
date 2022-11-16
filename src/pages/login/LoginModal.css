@@ -1,11 +1,11 @@
 .login-modal-container {
-    width: 530px;
-    height: 370px;
-    background-color: bisque;
-    box-shadow: 0 4px 7px #555;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
     display: flex;
     flex-direction: column;
+    width: 530px;
+    height: 370px;
+    background-color: white;
+    box-shadow: 0 4px 7px #555;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .login-modal-header {
@@ -22,5 +22,40 @@
 }
 
 .login-modal-header-close:hover {
+    cursor: pointer;
+}
+
+.login-modal-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.login-modal-content-right {
+    display: flex;
+    flex-direction: column;
+    height: 220px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login-modal-content-jump-app:hover {
+    cursor: pointer;
+}
+
+.login-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-modal-footer-other {
+    border: 1px solid;
+    border-radius: 25px;
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+.login-modal-footer-other:hover {
     cursor: pointer;
 }

@@ -1,7 +1,7 @@
-function AppDivider() {
+function MDivider() {
     return (
         <div style={{height: 1, backgroundColor: "#ccc"}}/>
     )
 }
 
-export default AppDivider
+export default MDivider
