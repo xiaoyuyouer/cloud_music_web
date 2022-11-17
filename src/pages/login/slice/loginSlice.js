@@ -1,40 +1,25 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {get} from "../../../service/net";
+import {createSlice} from "@reduxjs/toolkit";
+import {post} from "../../../service/net";
 import {API_QR_CREATE, API_QR_KEY} from "../../../service/net-config";
+
 
 const initialState = {
     //是否展示登录弹窗
     isShowLogin: false,
+    //二维码url
+    qrUrl: "",
 };
 
-///二维码key生成
-export const getQrKey = createAsyncThunk(
-    'login/qrKey',
-    async (searchKey, {rejectWithValue}) => {
-        try {
-            const response = await get(
-                API_QR_KEY,
-            );
-            return response.data;
-        } catch (e) {
-            return rejectWithValue(e)
-        }
-
-    }
-)
-
-///二维码生成
-function qrCreate(state, unikey) {
-    get(
-        API_QR_CREATE,
-        {'key': unikey}
-    ).then(r => {
-        console.log('走到了success')
-        console.log(r)
-    }, e => {
-        console.log('走到了error')
-        console.log(e)
-    })
+export async function getQrCode() {
+    ///二维码key生成
+    const qrKeyRes = await post(API_QR_KEY);
+    let uniKey = qrKeyRes.data.unikey;
+    console.log(uniKey);
+    //二维码url生成
+    const qrUrlRes = await post(API_QR_CREATE, {'key': uniKey});
+    let qrUrl = qrUrlRes.data.qrurl;
+    console.log(qrUrl);
+    return qrUrl;
 }
 
 export const loginSlice = createSlice({
@@ -44,24 +29,12 @@ export const loginSlice = createSlice({
         setShowLogin: (state, {payload}) => {
             state.isShowLogin = payload.isShowLogin;
         },
+        setQrUrl: (state, {payload}) => {
+            state.qrUrl = payload.qrUrl;
+        },
     },
-    extraReducers(builder) {
-        builder
-            .addCase(getQrKey.pending, (state) => {
-                console.log("🚀 ~ 进行中！")
-            })
-            .addCase(getQrKey.fulfilled, (state, {payload}) => {
-                console.log("🚀 ~ 请求完成！", payload);
-                console.log(payload.unikey)
-                qrCreate(state, payload.unikey);
-            })
-            .addCase(getQrKey.rejected, (state, e) => {
-                console.log("🚀 ~ 请求失败！", e.payload)
-            });
-    },
-
 });
 
-export const {setShowLogin} = loginSlice.actions;
+export const {setShowLogin, setQrUrl} = loginSlice.actions;
 
 export default loginSlice.reducer;

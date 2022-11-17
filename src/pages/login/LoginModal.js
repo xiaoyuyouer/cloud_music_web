@@ -1,16 +1,21 @@
 import "./LoginModal.css"
 import {CloseOutlined} from "@ant-design/icons";
-import {getQrKey, setShowLogin} from "./slice/loginSlice";
-import {useDispatch} from "react-redux";
+import {getQrCode, setQrUrl, setShowLogin} from "./slice/loginSlice";
+import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {Image} from "antd";
 import ImgScan from "../../assets/img/img_scan.png";
-import ImgQrcode from "../../assets/img/img_qrcode.png";
 import MSizeBox from "../../components/MSizeBox";
+import {QRCodeSVG} from 'qrcode.react';
 
 function LoginModal() {
 
     const dispatch = useDispatch()
+    const {qrUrl} = useSelector((store) => store.login)
+
+    useEffect(() => {
+        console.log('LoginModal mounted');
+    }, []);
 
     const clickClose = () => {
         dispatch(setShowLogin({isShowLogin: false}))
@@ -18,13 +23,10 @@ function LoginModal() {
 
     const clickLoginOther = () => {
         console.log("clickLoginOther")
-        dispatch(getQrKey())
+        getQrCode().then(r => {
+            dispatch(setQrUrl({qrUrl: r}));
+        });
     };
-
-    useEffect(() => {
-        console.log('LoginModal mounted');
-    }, []);
-
 
     return (
         <div className="login-modal-container">
@@ -45,12 +47,7 @@ function LoginModal() {
                 <MSizeBox width={50}/>
                 <div className="login-modal-content-right">
                     <span style={{fontSize: 18, fontWeight: "bold", color: "#333333"}}>扫码登录</span>
-                    <Image
-                        width={128}
-                        height={128}
-                        src={ImgQrcode}
-                        preview={false}
-                    />
+                    <QRCodeSVG value={qrUrl} size={128}/>
                     <div>
                         <span style={{fontSize: 12, color: "#999999"}}>使用</span>
                         <span className="login-modal-content-jump-app"
