@@ -1,6 +1,6 @@
 import "./LoginModal.css"
 import {CloseOutlined} from "@ant-design/icons";
-import {getQrInfo, setQrInfo, setShowLogin} from "./slice/loginSlice";
+import {getQrInfo, loopQrCheck, setQrInfo, setShowLogin} from "./slice/loginSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {Image} from "antd";
@@ -25,6 +25,9 @@ function LoginModal() {
         getQrInfo().then(r => {
             console.log(r);
             dispatch(setQrInfo({qrKey: r.qrKey, qrUrl: r.qrUrl}));
+            loopQrCheck(r.qrKey, (r) => {
+                console.log(r);
+            })
         });
     };
 

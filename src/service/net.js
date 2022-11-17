@@ -47,11 +47,6 @@ function request(axiosConfig, customOptions) {
     // 响应拦截
     service.interceptors.response.use(
         response => {
-            if (response.data && response.data.code !== 200) {
-                // code不等于200, 业务接口报错
-                const bizError = bizErrorHandle(response.data);
-                return Promise.reject(bizError);
-            }
             return response.data;
         },
         error => {
@@ -65,20 +60,6 @@ function request(axiosConfig, customOptions) {
     return service(axiosConfig)
 
 }
-
-/**
- * 处理业务异常
- * @param responseData
- */
-function bizErrorHandle(responseData) {
-    let code = responseData.code
-    let msg = "业务报错"
-    return {
-        "code": code,
-        "msg": msg,
-    }
-}
-
 
 /**
  * 处理网络异常

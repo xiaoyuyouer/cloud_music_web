@@ -22,7 +22,7 @@ const initialState = {
 
 ///关键字搜索
 export const searchSuggest = createAsyncThunk(
-    'search/suggest',
+    'header/searchSuggest',
     async (searchKey, {rejectWithValue}) => {
         try {
             const response = await get(
