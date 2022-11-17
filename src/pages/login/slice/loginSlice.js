@@ -6,20 +6,23 @@ import {API_QR_CREATE, API_QR_KEY} from "../../../service/net-config";
 const initialState = {
     //是否展示登录弹窗
     isShowLogin: false,
+    //二维码key
+    qrKey: "",
     //二维码url
     qrUrl: "",
 };
 
-export async function getQrCode() {
+export async function getQrInfo() {
     ///二维码key生成
     const qrKeyRes = await post(API_QR_KEY);
-    let uniKey = qrKeyRes.data.unikey;
-    console.log(uniKey);
+    let qrKey = qrKeyRes.data.unikey;
     //二维码url生成
-    const qrUrlRes = await post(API_QR_CREATE, {'key': uniKey});
+    const qrUrlRes = await post(API_QR_CREATE, {'key': qrKey});
     let qrUrl = qrUrlRes.data.qrurl;
-    console.log(qrUrl);
-    return qrUrl;
+    return {
+        qrKey: qrKey,
+        qrUrl: qrUrl,
+    };
 }
 
 export const loginSlice = createSlice({
@@ -29,12 +32,13 @@ export const loginSlice = createSlice({
         setShowLogin: (state, {payload}) => {
             state.isShowLogin = payload.isShowLogin;
         },
-        setQrUrl: (state, {payload}) => {
+        setQrInfo: (state, {payload}) => {
+            state.qrKey = payload.qrKey;
             state.qrUrl = payload.qrUrl;
         },
     },
 });
 
-export const {setShowLogin, setQrUrl} = loginSlice.actions;
+export const {setShowLogin, setQrInfo} = loginSlice.actions;
 
 export default loginSlice.reducer;
