@@ -1,6 +1,6 @@
 import "./LoginModal.css"
 import {CloseOutlined} from "@ant-design/icons";
-import {setShowLogin} from "./slice/loginSlice";
+import {getQrKey, setShowLogin} from "./slice/loginSlice";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {Image} from "antd";
@@ -14,6 +14,11 @@ function LoginModal() {
 
     const clickClose = () => {
         dispatch(setShowLogin({isShowLogin: false}))
+    };
+
+    const clickLoginOther = () => {
+        console.log("clickLoginOther")
+        dispatch(getQrKey())
     };
 
     useEffect(() => {
@@ -57,7 +62,7 @@ function LoginModal() {
             </div>
             <MSizeBox height={25}/>
             <div className="login-modal-footer">
-                <span className="login-modal-footer-other">选择其他登录模式</span>
+                <span className="login-modal-footer-other" onClick={() => clickLoginOther()}>选择其他登录模式</span>
             </div>
         </div>
     )

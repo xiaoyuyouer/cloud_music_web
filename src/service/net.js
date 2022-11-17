@@ -12,6 +12,7 @@ export function get(url, params) {
 
 
 export function post(url, data) {
+    url = url + "?timestamp=" + Date.now()
     return request({
         url: url,
         method: "POST",
@@ -51,7 +52,6 @@ function request(axiosConfig, customOptions) {
                 const bizError = bizErrorHandle(response.data);
                 return Promise.reject(bizError);
             }
-
             return response.data;
         },
         error => {

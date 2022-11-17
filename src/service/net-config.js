@@ -6,4 +6,10 @@ export const BASE_URL =
 export const TIMEOUT = 10000
 
 //搜索建议
-export const API_SEARCH_SUGGEST = "search/suggest"
+export const API_SEARCH_SUGGEST = "/search/suggest"
+
+//二维码 key 生成
+export const API_QR_KEY = "/login/qr/key"
+
+//二维码生成
+export const API_QR_CREATE = "/login/qr/create"
