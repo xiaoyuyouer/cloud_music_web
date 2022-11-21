@@ -1,9 +1,18 @@
 import "./LoginModal.css"
 import {CloseOutlined} from "@ant-design/icons";
-import {clear, getQrInfo, loopQrCheck, setQrInfo, setQrStatus, setShowLogin, stopLoopQrCheck} from "./slice/loginSlice";
+import {
+    clear,
+    getQrInfo,
+    loopQrCheck,
+    setLoading,
+    setQrInfo,
+    setQrStatus,
+    setShowLogin,
+    stopLoopQrCheck
+} from "./slice/loginSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {Image} from "antd";
+import {Image, Spin} from "antd";
 import ImgScan from "../../assets/img/img_scan.png";
 import ImgScanSuccess from "../../assets/img/img_scan_success.png";
 import MSizeBox from "../../components/MSizeBox";
@@ -12,19 +21,23 @@ import {QRCodeSVG} from 'qrcode.react';
 function LoginModal() {
 
     const dispatch = useDispatch()
-    const {isShowLogin, qrUrl, qrStatus} = useSelector((store) => store.login)
+    const {isShowLogin, isLoading, qrUrl, qrStatus} = useSelector((store) => store.login)
 
     //监听登录弹窗打开状态，打开之后请求二维码信息，关闭之后清除定时任务
     useEffect(() => {
         console.log('LoginModal isShowLogin：' + isShowLogin);
         if (isShowLogin) {
+            dispatch(setLoading({isLoading: true}));
             getQrInfo().then(r => {
                 console.log(r);
+                dispatch(setLoading({isLoading: false}));
                 dispatch(setQrInfo({qrKey: r.qrKey, qrUrl: r.qrUrl}));
                 loopQrCheck(r.qrKey, (r) => {
                     console.log(r);
                     dispatch(setQrStatus({qrStatus: r.qrStatus, cookie: r.cookie}));
                 })
+            }).catch(e => {
+                dispatch(setLoading({isLoading: false}));
             });
         } else {
             stopLoopQrCheck();
@@ -54,9 +67,6 @@ function LoginModal() {
             //2待确认
             return confirmWidget();
         }
-        if (qrStatus === 3) {
-            //授权登录成功
-        }
     }
 
     const waitScanWidget = () => {
@@ -71,7 +81,9 @@ function LoginModal() {
                 <MSizeBox width={50}/>
                 <div className="login-modal-content-right">
                     <span style={{fontSize: 18, fontWeight: "bold", color: "#333333"}}>扫码登录</span>
-                    <QRCodeSVG value={qrUrl} size={128}/>
+                    <Spin spinning={isLoading}>
+                        <QRCodeSVG value={qrUrl} size={128}/>
+                    </Spin>
                     <div>
                         <span style={{fontSize: 12, color: "#999999"}}>使用</span>
                         <span className="login-modal-content-jump-app"

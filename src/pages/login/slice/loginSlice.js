@@ -7,6 +7,8 @@ import {isNull} from "../../../utils/utils";
 const initialState = {
     //是否展示登录弹窗
     isShowLogin: false,
+    //是否正在请求网络
+    isLoading: true,
     //二维码key
     qrKey: "",
     //二维码url
@@ -81,6 +83,9 @@ export const loginSlice = createSlice({
         setShowLogin: (state, {payload}) => {
             state.isShowLogin = payload.isShowLogin;
         },
+        setLoading: (state, {payload}) => {
+            state.isLoading = payload.isLoading;
+        },
         setQrInfo: (state, {payload}) => {
             state.qrKey = payload.qrKey;
             state.qrUrl = payload.qrUrl;
@@ -88,6 +93,10 @@ export const loginSlice = createSlice({
         setQrStatus: (state, {payload}) => {
             state.qrStatus = payload.qrStatus;
             state.cookie = payload.cookie;
+            if (state.qrStatus === 3) {
+                //授权登录成功
+                state.isShowLogin = false;
+            }
         },
         clear: (state, {payload}) => {
             state.qrKey = "";
@@ -97,6 +106,6 @@ export const loginSlice = createSlice({
     },
 });
 
-export const {setShowLogin, setQrInfo, setQrStatus, clear} = loginSlice.actions;
+export const {setShowLogin, setLoading, setQrInfo, setQrStatus, clear} = loginSlice.actions;
 
 export default loginSlice.reducer;
