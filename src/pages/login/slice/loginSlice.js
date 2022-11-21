@@ -32,7 +32,16 @@ export async function getQrInfo() {
 
 let looper;
 
+export function stopLoopQrCheck() {
+    if (!isNull(looper)) {
+        console.log('清除定时器');
+        clearInterval(looper);
+        looper = null;
+    }
+}
+
 export function loopQrCheck(key, callback) {
+    console.log('开启定时器');
     let qrStatus = 0;
     looper = setInterval(
         () => {
@@ -71,13 +80,6 @@ export const loginSlice = createSlice({
     reducers: {
         setShowLogin: (state, {payload}) => {
             state.isShowLogin = payload.isShowLogin;
-            if (state.isShowLogin === false) {
-                if (!isNull(looper)) {
-                    console.log('清除定时器');
-                    clearInterval(looper);
-                    looper = null;
-                }
-            }
         },
         setQrInfo: (state, {payload}) => {
             state.qrKey = payload.qrKey;

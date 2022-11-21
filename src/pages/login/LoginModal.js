@@ -1,6 +1,6 @@
 import "./LoginModal.css"
 import {CloseOutlined} from "@ant-design/icons";
-import {getQrInfo, loopQrCheck, setQrInfo, setShowLogin} from "./slice/loginSlice";
+import {getQrInfo, loopQrCheck, setQrInfo, setShowLogin, stopLoopQrCheck} from "./slice/loginSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {Image} from "antd";
@@ -11,11 +11,23 @@ import {QRCodeSVG} from 'qrcode.react';
 function LoginModal() {
 
     const dispatch = useDispatch()
-    const {qrUrl} = useSelector((store) => store.login)
+    const {qrUrl, isShowLogin} = useSelector((store) => store.login)
 
     useEffect(() => {
-        console.log('LoginModal mounted');
-    }, []);
+        console.log('LoginModal isShowLogin：' + isShowLogin);
+        if (isShowLogin) {
+            getQrInfo().then(r => {
+                console.log(r);
+                dispatch(setQrInfo({qrKey: r.qrKey, qrUrl: r.qrUrl}));
+                loopQrCheck(r.qrKey, (r) => {
+                    console.log(r);
+                })
+            });
+        } else {
+            stopLoopQrCheck();
+        }
+        // eslint-disable-next-line
+    }, [isShowLogin]);
 
     const clickClose = () => {
         dispatch(setShowLogin({isShowLogin: false}))
