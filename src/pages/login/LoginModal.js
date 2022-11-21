@@ -13,6 +13,7 @@ function LoginModal() {
     const dispatch = useDispatch()
     const {qrUrl, isShowLogin} = useSelector((store) => store.login)
 
+    //监听登录弹窗打开状态，打开之后请求二维码信息，关闭之后清除定时任务
     useEffect(() => {
         console.log('LoginModal isShowLogin：' + isShowLogin);
         if (isShowLogin) {
@@ -34,13 +35,7 @@ function LoginModal() {
     };
 
     const clickLoginOther = () => {
-        getQrInfo().then(r => {
-            console.log(r);
-            dispatch(setQrInfo({qrKey: r.qrKey, qrUrl: r.qrUrl}));
-            loopQrCheck(r.qrKey, (r) => {
-                console.log(r);
-            })
-        });
+
     };
 
     return (
