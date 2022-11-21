@@ -12,7 +12,7 @@ const initialState = {
     //二维码url
     qrUrl: "",
     //扫码状态，0二维码过期，1等待扫码，2待确认，3授权登录成功
-    qrStatus: 0,
+    qrStatus: 1,
     //登录成功cookie
     cookie: "",
 };
@@ -89,9 +89,14 @@ export const loginSlice = createSlice({
             state.qrStatus = payload.qrStatus;
             state.cookie = payload.cookie;
         },
+        clear: (state, {payload}) => {
+            state.qrKey = "";
+            state.qrUrl = "";
+            state.qrStatus = 1;
+        },
     },
 });
 
-export const {setShowLogin, setQrInfo} = loginSlice.actions;
+export const {setShowLogin, setQrInfo, setQrStatus, clear} = loginSlice.actions;
 
 export default loginSlice.reducer;

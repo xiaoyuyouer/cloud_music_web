@@ -59,3 +59,9 @@
 .login-modal-footer-other:hover {
     cursor: pointer;
 }
+
+.login-modal-content-confirm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
