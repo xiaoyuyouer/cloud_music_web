@@ -15,10 +15,20 @@ export function warpTag(content, keyword, tagName) {
     return content.replace(regS, val);
 }
 
+
+/**
+ * 判断变量是否为空
+ * @params obj 变量
+ */
+export function isNull(obj) {
+    return typeof (obj) == "undefined" || obj == null;
+}
+
 /**
  * 判断对象是否为空
  * @params obj 对象
  */
 export function isEmptyObject(obj) {
+    console.log(obj)
     return Object.keys(obj).length === 0;
 }

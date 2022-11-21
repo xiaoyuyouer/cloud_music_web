@@ -1,6 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {post} from "../../../service/net";
 import {API_QR_CHECK, API_QR_CREATE, API_QR_KEY} from "../../../service/net-config";
+import {isNull} from "../../../utils/utils";
 
 
 const initialState = {
@@ -29,9 +30,11 @@ export async function getQrInfo() {
     };
 }
 
+let looper;
+
 export function loopQrCheck(key, callback) {
     let qrStatus = 0;
-    const looper = setInterval(
+    looper = setInterval(
         () => {
             post(API_QR_CHECK, {'key': key}).then(r => {
                 qrStatus = 0;
@@ -68,6 +71,13 @@ export const loginSlice = createSlice({
     reducers: {
         setShowLogin: (state, {payload}) => {
             state.isShowLogin = payload.isShowLogin;
+            if (state.isShowLogin === false) {
+                if (!isNull(looper)) {
+                    console.log('清除定时器');
+                    clearInterval(looper);
+                    looper = null;
+                }
+            }
         },
         setQrInfo: (state, {payload}) => {
             state.qrKey = payload.qrKey;
