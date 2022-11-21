@@ -14,7 +14,7 @@ const initialState = {
     //二维码url
     qrUrl: "",
     //扫码状态，0二维码过期，1等待扫码，2待确认，3授权登录成功
-    qrStatus: 1,
+    qrStatus: 0,
     //登录成功cookie
     cookie: "",
 };

@@ -58,16 +58,54 @@ function LoginModal() {
     const loginContentWidget = () => {
         if (qrStatus === 0) {
             //二维码过期
+            return expiredWidget();
         }
         if (qrStatus === 1) {
-            //1等待扫码
+            //等待扫码
             return waitScanWidget();
         }
         if ((qrStatus === 2)) {
-            //2待确认
+            //待确认
             return confirmWidget();
         }
     }
+
+    const expiredRefreshWidget = () => {
+        return (
+            <div>sdfadfaf</div>
+        );
+    }
+
+    const expiredWidget = () => {
+        return (
+            <div className="login-modal-content">
+                <Image
+                    width={125}
+                    height={220}
+                    src={ImgScan}
+                    preview={false}
+                />
+                <MSizeBox width={50}/>
+                <div className="login-modal-content-right">
+                    <span style={{fontSize: 18, fontWeight: "bold", color: "#333333"}}>扫码登录</span>
+                    <QRCodeSVG value={qrUrl} size={128}/>
+                    <div>
+                        <span style={{fontSize: 12, color: "#999999"}}>使用</span>
+                        <span className="login-modal-content-jump-app"
+                              style={{
+                                  fontSize: 12,
+                                  color: "#0c73c2",
+                                  marginRight: 2,
+                                  marginLeft: 2
+                              }}>网易云音乐App</span>
+                        <span style={{fontSize: 12, color: "#999999"}}>扫码登录</span>
+                    </div>
+
+                </div>
+            </div>
+        )
+    }
+
 
     const waitScanWidget = () => {
         return (
