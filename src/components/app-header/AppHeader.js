@@ -101,6 +101,7 @@ function AppHeader() {
                 onCancel={closeLoginModal}
                 centered
                 closable={false}
+                transitionName=""
                 bodyStyle={{
                     padding: "0",
                 }}
