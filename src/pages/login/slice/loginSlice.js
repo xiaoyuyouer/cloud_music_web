@@ -1,7 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {post} from "../../../service/net";
 import {API_QR_CHECK, API_QR_CREATE, API_QR_KEY} from "../../../service/net-config";
-import {isNull} from "../../../utils/utils";
+import {isNull} from "../../../utils/common-utils";
+import StorageUtils from "../../../utils/storage-utils";
 
 
 const initialState = {
@@ -14,7 +15,7 @@ const initialState = {
     //二维码url
     qrUrl: "",
     //扫码状态，0二维码过期，1等待扫码，2待确认，3授权登录成功
-    qrStatus: 1,
+    qrStatus: 0,
     //登录成功cookie
     cookie: "",
 };
@@ -63,6 +64,7 @@ export function loopQrCheck(key, callback) {
                     case 803:
                         qrStatus = 3;
                         clearInterval(looper);
+                        StorageUtils.saveCookie(r.cookie);
                         break;
                     default:
                         break;

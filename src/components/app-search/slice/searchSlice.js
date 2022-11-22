@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {get} from "../../../service/net";
 import {API_SEARCH_SUGGEST} from "../../../service/net-config";
-import {isEmptyObject} from "../../../utils/utils";
+import {isEmptyObject} from "../../../utils/common-utils";
 
 const initialState = {
     //是否展示搜索结果弹窗

@@ -6,7 +6,7 @@ import IconUser from "../../assets/img/icon_user.png";
 import IconAlbum from "../../assets/img/icon_album.png";
 import MDivider from "../MDivider";
 import {useSelector} from 'react-redux';
-import {warpTag} from "../../utils/utils";
+import {warpTag} from "../../utils/common-utils";
 import {Spin, Empty} from 'antd';
 
 function SearchContent() {

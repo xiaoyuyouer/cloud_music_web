@@ -7,6 +7,7 @@ import {Modal} from "antd";
 import LoginModal from "../../pages/login/LoginModal";
 import {useDispatch,} from 'react-redux';
 import {setShowLogin} from "../../pages/login/slice/loginSlice";
+import StorageUtils, {COOKIE_STORAGE} from "../../utils/storage-utils";
 
 
 function AppHeader() {
@@ -46,6 +47,10 @@ function AppHeader() {
 
     const clickLogin = () => {
         dispatch(setShowLogin({isShowLogin: true}))
+        let cookie = StorageUtils.getCookie(COOKIE_STORAGE);
+        console.log("clickLogin-------->")
+        console.log(cookie)
+        console.log("clickLogin-------->")
     };
 
     const closeLoginModal = () => {
