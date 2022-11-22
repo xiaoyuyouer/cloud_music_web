@@ -87,6 +87,20 @@ function QrLogin() {
         )
     }
 
+    const footerWidget = () => {
+        if (qrStatus === 2) {
+            return <></>
+        }
+        return (
+            <>
+                <MSizeBox height={25}/>
+                <div className="qr-login-footer">
+                    <span className="qr-login-footer-other" onClick={() => clickLoginOther()}>选择其他登录模式</span>
+                </div>
+            </>
+        );
+    }
+
 
     const expiredWidget = () => {
         return (
@@ -161,13 +175,9 @@ function QrLogin() {
 
 
     return (
-        <div>
-            <MSizeBox height={30}/>
+        <div className="qr-login-content">
             {loginContentWidget()}
-            <MSizeBox height={25}/>
-            <div className="qr-login-footer">
-                <span className="qr-login-footer-other" onClick={() => clickLoginOther()}>选择其他登录模式</span>
-            </div>
+            {footerWidget()}
         </div>
     )
 

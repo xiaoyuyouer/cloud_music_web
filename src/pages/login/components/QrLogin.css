@@ -1,3 +1,10 @@
+.qr-login-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .qr-login-content-wait {
     display: flex;
