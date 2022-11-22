@@ -7,7 +7,7 @@ export const USER_STORAGE = "user_storage"
 
 const StorageUtils = {
     saveCookie(cookie) {
-        console.log("saveCookie: " + cookie);
+        console.log("saveCookie =>>>>> " + cookie);
         if (isNull(cookie)) {
             return;
         }
@@ -15,7 +15,9 @@ const StorageUtils = {
     },
 
     getCookie() {
-        return store.get(COOKIE_STORAGE) || "";
+        let cookie = store.get(COOKIE_STORAGE) || "";
+        console.log("getCookie =>>>>> " + cookie);
+        return cookie;
     },
 
     removeCookie() {

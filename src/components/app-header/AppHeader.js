@@ -2,10 +2,9 @@ import "./AppHeader.css"
 import {NavLink} from "react-router-dom";
 import SearchInput from "../app-search/SearchInput";
 import SearchContent from "../app-search/SearchContent";
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {Modal} from "antd";
 import LoginModal from "../../pages/login/LoginModal";
-import {useDispatch,} from 'react-redux';
 import {setShowLogin} from "../../pages/login/slice/loginSlice";
 import StorageUtils, {COOKIE_STORAGE} from "../../utils/storage-utils";
 
@@ -47,10 +46,7 @@ function AppHeader() {
 
     const clickLogin = () => {
         dispatch(setShowLogin({isShowLogin: true}))
-        let cookie = StorageUtils.getCookie(COOKIE_STORAGE);
-        console.log("clickLogin-------->")
-        console.log(cookie)
-        console.log("clickLogin-------->")
+        StorageUtils.getCookie(COOKIE_STORAGE);
     };
 
     const closeLoginModal = () => {
