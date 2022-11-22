@@ -70,6 +70,24 @@ function QrLogin() {
         }
     }
 
+
+    const infoWidget = () => {
+        return (
+            <div>
+                <span style={{fontSize: 12, color: "#999999"}}>使用</span>
+                <span className="qr-login-modal-content-jump-app"
+                      style={{
+                          fontSize: 12,
+                          color: "#0c73c2",
+                          marginRight: 2,
+                          marginLeft: 2
+                      }}>网易云音乐App</span>
+                <span style={{fontSize: 12, color: "#999999"}}>扫码登录</span>
+            </div>
+        )
+    }
+
+
     const expiredWidget = () => {
         return (
             <div className="qr-login-modal-content">
@@ -94,19 +112,7 @@ function QrLogin() {
                             </div>
                         </div>
                     </div>
-
-                    <div>
-                        <span style={{fontSize: 12, color: "#999999"}}>使用</span>
-                        <span className="qr-login-modal-content-jump-app"
-                              style={{
-                                  fontSize: 12,
-                                  color: "#0c73c2",
-                                  marginRight: 2,
-                                  marginLeft: 2
-                              }}>网易云音乐App</span>
-                        <span style={{fontSize: 12, color: "#999999"}}>扫码登录</span>
-                    </div>
-
+                    {infoWidget()}
                 </div>
             </div>
         )
@@ -128,22 +134,12 @@ function QrLogin() {
                     <Spin spinning={isLoading}>
                         <QRCodeSVG value={qrUrl} size={128}/>
                     </Spin>
-                    <div>
-                        <span style={{fontSize: 12, color: "#999999"}}>使用</span>
-                        <span className="qr-login-modal-content-jump-app"
-                              style={{
-                                  fontSize: 12,
-                                  color: "#0c73c2",
-                                  marginRight: 2,
-                                  marginLeft: 2
-                              }}>网易云音乐App</span>
-                        <span style={{fontSize: 12, color: "#999999"}}>扫码登录</span>
-                    </div>
-
+                    {infoWidget()}
                 </div>
             </div>
         )
     }
+
 
     const confirmWidget = () => {
         return (
@@ -162,6 +158,7 @@ function QrLogin() {
             </div>
         )
     }
+
 
     return (
         <div>
