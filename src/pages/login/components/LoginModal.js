@@ -2,7 +2,6 @@ import "./LoginModal.css"
 import {CloseOutlined} from "@ant-design/icons";
 import {setShowLogin} from "../slice/loginSlice";
 import {useDispatch} from "react-redux";
-import MSizeBox from "../../../components/MSizeBox";
 import QrLogin from "./QrLogin";
 
 function LoginModal() {
