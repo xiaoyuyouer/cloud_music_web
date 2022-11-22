@@ -16,6 +16,10 @@ const StorageUtils = {
 
     getCookie() {
         return store.get(COOKIE_STORAGE) || "";
+    },
+
+    removeCookie() {
+        store.remove(COOKIE_STORAGE);
     }
 }
 
