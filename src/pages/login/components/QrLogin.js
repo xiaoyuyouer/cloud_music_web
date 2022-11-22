@@ -1,24 +1,14 @@
-import "./LoginModal.css"
-import {CloseOutlined} from "@ant-design/icons";
-import {
-    clear,
-    getQrInfo,
-    loopQrCheck,
-    setLoading,
-    setQrInfo,
-    setQrStatus,
-    setShowLogin,
-    stopLoopQrCheck
-} from "./slice/loginSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
+import {clear, getQrInfo, loopQrCheck, setLoading, setQrInfo, setQrStatus, stopLoopQrCheck} from "../slice/loginSlice";
 import {Image, Spin} from "antd";
-import ImgScan from "../../assets/img/img_scan.png";
-import ImgScanSuccess from "../../assets/img/img_scan_success.png";
-import MSizeBox from "../../components/MSizeBox";
-import {QRCodeSVG} from 'qrcode.react';
+import ImgScan from "../../../assets/img/img_scan.png";
+import MSizeBox from "../../../components/MSizeBox";
+import {QRCodeSVG} from "qrcode.react";
+import ImgScanSuccess from "../../../assets/img/img_scan_success.png";
+import "./QrLogin.css"
 
-function LoginModal() {
+function QrLogin() {
 
     const dispatch = useDispatch()
     const {isShowLogin, isLoading, qrUrl, qrStatus} = useSelector((store) => store.login)
@@ -35,11 +25,6 @@ function LoginModal() {
         // eslint-disable-next-line
     }, [isShowLogin]);
 
-    const clickClose = () => {
-        console.log("点击关闭登录弹窗")
-        dispatch(setShowLogin({isShowLogin: false}))
-    };
-
     const clickRefresh = () => {
         console.log("点击刷新")
         updateQrCode();
@@ -48,6 +33,7 @@ function LoginModal() {
     const clickLoginOther = () => {
         console.log("点击其他方式登录")
     };
+
 
     //请求网络，更新二维码
     function updateQrCode() {
@@ -84,10 +70,9 @@ function LoginModal() {
         }
     }
 
-
     const expiredWidget = () => {
         return (
-            <div className="login-modal-content">
+            <div className="qr-login-modal-content">
                 <Image
                     width={125}
                     height={220}
@@ -95,16 +80,16 @@ function LoginModal() {
                     preview={false}
                 />
                 <MSizeBox width={50}/>
-                <div className="login-modal-content-right">
+                <div className="qr-login-modal-content-right">
                     <span style={{fontSize: 18, fontWeight: "bold", color: "#333333"}}>扫码登录</span>
-                    <div className="login-modal-content-expired">
+                    <div className="qr-login-modal-content-expired">
                         <div style={{position: "absolute"}}>
                             <QRCodeSVG value={qrUrl} size={128}/>
                         </div>
-                        <div className="login-modal-content-expired-top">
+                        <div className="qr-login-modal-content-expired-top">
                             <span style={{fontSize: 12, color: "black", fontWeight: "bold"}}>二维码已失效</span>
                             <MSizeBox height={5}/>
-                            <div className="login-modal-content-expired-top-button"
+                            <div className="qr-login-modal-content-expired-top-button"
                                  onClick={() => clickRefresh()}>点击刷新
                             </div>
                         </div>
@@ -112,7 +97,7 @@ function LoginModal() {
 
                     <div>
                         <span style={{fontSize: 12, color: "#999999"}}>使用</span>
-                        <span className="login-modal-content-jump-app"
+                        <span className="qr-login-modal-content-jump-app"
                               style={{
                                   fontSize: 12,
                                   color: "#0c73c2",
@@ -130,7 +115,7 @@ function LoginModal() {
 
     const waitScanWidget = () => {
         return (
-            <div className="login-modal-content">
+            <div className="qr-login-modal-content">
                 <Image
                     width={125}
                     height={220}
@@ -138,14 +123,14 @@ function LoginModal() {
                     preview={false}
                 />
                 <MSizeBox width={50}/>
-                <div className="login-modal-content-right">
+                <div className="qr-login-modal-content-right">
                     <span style={{fontSize: 18, fontWeight: "bold", color: "#333333"}}>扫码登录</span>
                     <Spin spinning={isLoading}>
                         <QRCodeSVG value={qrUrl} size={128}/>
                     </Spin>
                     <div>
                         <span style={{fontSize: 12, color: "#999999"}}>使用</span>
-                        <span className="login-modal-content-jump-app"
+                        <span className="qr-login-modal-content-jump-app"
                               style={{
                                   fontSize: 12,
                                   color: "#0c73c2",
@@ -162,7 +147,7 @@ function LoginModal() {
 
     const confirmWidget = () => {
         return (
-            <div className="login-modal-content-confirm">
+            <div className="qr-login-modal-content-confirm">
                 <MSizeBox height={5}/>
                 <Image
                     width={140}
@@ -178,23 +163,16 @@ function LoginModal() {
         )
     }
 
-
     return (
-        <div className="login-modal-container">
-            <div className="login-modal-header">
-                <span>登录</span>
-                <div className="login-modal-header-close" onClick={() => clickClose()}>
-                    <CloseOutlined style={{color: "#888888"}}/>
-                </div>
-            </div>
-            <MSizeBox height={30}/>
+        <div>
             {loginContentWidget()}
             <MSizeBox height={25}/>
-            <div className="login-modal-footer">
-                <span className="login-modal-footer-other" onClick={() => clickLoginOther()}>选择其他登录模式</span>
+            <div className="qr-login-modal-footer">
+                <span className="qr-login-modal-footer-other" onClick={() => clickLoginOther()}>选择其他登录模式</span>
             </div>
         </div>
     )
+
 }
 
-export default LoginModal
+export default QrLogin

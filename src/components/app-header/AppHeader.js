@@ -4,7 +4,7 @@ import SearchInput from "../app-search/SearchInput";
 import SearchContent from "../app-search/SearchContent";
 import {useDispatch, useSelector} from 'react-redux';
 import {Modal} from "antd";
-import LoginModal from "../../pages/login/LoginModal";
+import LoginModal from "../../pages/login/components/LoginModal";
 import {setShowLogin} from "../../pages/login/slice/loginSlice";
 
 
