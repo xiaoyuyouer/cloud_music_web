@@ -16,7 +16,7 @@ const StorageUtils = {
 
     getCookie() {
         let cookie = store.get(COOKIE_STORAGE) || "";
-        console.log("getCookie =>>>>> " + cookie);
+        // console.log("getCookie =>>>>> " + cookie);
         return cookie;
     },
 

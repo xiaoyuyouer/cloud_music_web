@@ -1,6 +1,7 @@
 import axios from "axios";
 import {BASE_URL, TIMEOUT} from "./net-config";
-import {getTokenAUTH} from "./net-auth";
+import StorageUtils from "../utils/storage-utils";
+import {isNull} from "../utils/common-utils";
 
 export function get(url, params) {
     return request({
@@ -21,21 +22,35 @@ export function post(url, data) {
 }
 
 
-function request(axiosConfig, customOptions) {
+function request(axiosConfig) {
     const service = axios.create({
-        baseURL: BASE_URL, // 设置统一的请求前缀
-        timeout: TIMEOUT, // 设置统一的超时时长
+        baseURL: BASE_URL,
+        timeout: TIMEOUT,
     });
-
-    // 自定义配置
-    // let options = Object.assign({}, customOptions);
 
     // 请求拦截
     service.interceptors.request.use(
         config => {
-            // 自动携带token
-            if (getTokenAUTH() && typeof window !== "undefined") {
-                config.headers.Authorization = getTokenAUTH();
+            // 自动携带cookie
+            let cookie = StorageUtils.getCookie();
+            if (!isNull(cookie)) {
+                if (config.method === "get") {
+                    if (!isNull(config.params)) {
+                        config.params.cookie = cookie;
+                    } else {
+                        //未携带参数
+                        config.params = {};
+                        config.params.cookie = cookie;
+                    }
+                } else {
+                    if (!isNull(config.data)) {
+                        config.data.cookie = cookie;
+                    } else {
+                        //未携带参数
+                        config.data = {};
+                        config.data.cookie = cookie;
+                    }
+                }
             }
             return config;
         },
