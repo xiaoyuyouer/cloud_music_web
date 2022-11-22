@@ -27,18 +27,7 @@ function LoginModal() {
     useEffect(() => {
         console.log('LoginModal isShowLogin：' + isShowLogin);
         if (isShowLogin) {
-            dispatch(setLoading({isLoading: true}));
-            getQrInfo().then(r => {
-                console.log(r);
-                dispatch(setLoading({isLoading: false}));
-                dispatch(setQrInfo({qrKey: r.qrKey, qrUrl: r.qrUrl}));
-                loopQrCheck(r.qrKey, (r) => {
-                    console.log(r);
-                    dispatch(setQrStatus({qrStatus: r.qrStatus, cookie: r.cookie}));
-                })
-            }).catch(e => {
-                dispatch(setLoading({isLoading: false}));
-            });
+            updateQrCode();
         } else {
             stopLoopQrCheck();
             dispatch(clear());
@@ -47,15 +36,40 @@ function LoginModal() {
     }, [isShowLogin]);
 
     const clickClose = () => {
+        console.log("点击关闭登录弹窗")
         dispatch(setShowLogin({isShowLogin: false}))
     };
 
-    const clickLoginOther = () => {
-
+    const clickRefresh = () => {
+        console.log("点击刷新")
+        updateQrCode();
     };
+
+    const clickLoginOther = () => {
+        console.log("点击其他方式登录")
+    };
+
+    //请求网络，更新二维码
+    function updateQrCode() {
+        stopLoopQrCheck();
+        dispatch(setQrStatus({qrStatus: 1}));
+        dispatch(setLoading({isLoading: true}));
+        getQrInfo().then(r => {
+            console.log(r);
+            dispatch(setLoading({isLoading: false}));
+            dispatch(setQrInfo({qrKey: r.qrKey, qrUrl: r.qrUrl}));
+            loopQrCheck(r.qrKey, (r) => {
+                console.log(r);
+                dispatch(setQrStatus({qrStatus: r.qrStatus, cookie: r.cookie}));
+            })
+        }).catch(e => {
+            dispatch(setLoading({isLoading: false}));
+        });
+    }
 
 
     const loginContentWidget = () => {
+
         if (qrStatus === 0) {
             //二维码过期
             return expiredWidget();
@@ -70,11 +84,6 @@ function LoginModal() {
         }
     }
 
-    const expiredRefreshWidget = () => {
-        return (
-            <div>sdfadfaf</div>
-        );
-    }
 
     const expiredWidget = () => {
         return (
@@ -88,7 +97,19 @@ function LoginModal() {
                 <MSizeBox width={50}/>
                 <div className="login-modal-content-right">
                     <span style={{fontSize: 18, fontWeight: "bold", color: "#333333"}}>扫码登录</span>
-                    <QRCodeSVG value={qrUrl} size={128}/>
+                    <div className="login-modal-content-expired">
+                        <div style={{position: "absolute"}}>
+                            <QRCodeSVG value={qrUrl} size={128}/>
+                        </div>
+                        <div className="login-modal-content-expired-top">
+                            <span style={{fontSize: 12, color: "black", fontWeight: "bold"}}>二维码已失效</span>
+                            <MSizeBox height={5}/>
+                            <div className="login-modal-content-expired-top-button"
+                                 onClick={() => clickRefresh()}>点击刷新
+                            </div>
+                        </div>
+                    </div>
+
                     <div>
                         <span style={{fontSize: 12, color: "#999999"}}>使用</span>
                         <span className="login-modal-content-jump-app"
