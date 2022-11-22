@@ -75,7 +75,7 @@ function QrLogin() {
         return (
             <div>
                 <span style={{fontSize: 12, color: "#999999"}}>使用</span>
-                <span className="qr-login-modal-content-jump-app"
+                <span className="qr-login-content-jump-app"
                       style={{
                           fontSize: 12,
                           color: "#0c73c2",
@@ -90,7 +90,7 @@ function QrLogin() {
 
     const expiredWidget = () => {
         return (
-            <div className="qr-login-modal-content">
+            <div className="qr-login-content-wait">
                 <Image
                     width={125}
                     height={220}
@@ -98,16 +98,16 @@ function QrLogin() {
                     preview={false}
                 />
                 <MSizeBox width={50}/>
-                <div className="qr-login-modal-content-right">
+                <div className="qr-login-content-wait-right">
                     <span style={{fontSize: 18, fontWeight: "bold", color: "#333333"}}>扫码登录</span>
-                    <div className="qr-login-modal-content-expired">
+                    <div className="qr-login-content-expired">
                         <div style={{position: "absolute"}}>
                             <QRCodeSVG value={qrUrl} size={128}/>
                         </div>
-                        <div className="qr-login-modal-content-expired-top">
+                        <div className="qr-login-content-expired-top">
                             <span style={{fontSize: 12, color: "black", fontWeight: "bold"}}>二维码已失效</span>
                             <MSizeBox height={5}/>
-                            <div className="qr-login-modal-content-expired-top-button"
+                            <div className="qr-login-content-expired-top-button"
                                  onClick={() => clickRefresh()}>点击刷新
                             </div>
                         </div>
@@ -121,7 +121,7 @@ function QrLogin() {
 
     const waitScanWidget = () => {
         return (
-            <div className="qr-login-modal-content">
+            <div className="qr-login-content-wait">
                 <Image
                     width={125}
                     height={220}
@@ -129,7 +129,7 @@ function QrLogin() {
                     preview={false}
                 />
                 <MSizeBox width={50}/>
-                <div className="qr-login-modal-content-right">
+                <div className="qr-login-content-wait-right">
                     <span style={{fontSize: 18, fontWeight: "bold", color: "#333333"}}>扫码登录</span>
                     <Spin spinning={isLoading}>
                         <QRCodeSVG value={qrUrl} size={128}/>
@@ -143,7 +143,7 @@ function QrLogin() {
 
     const confirmWidget = () => {
         return (
-            <div className="qr-login-modal-content-confirm">
+            <div className="qr-login-content-confirm">
                 <MSizeBox height={5}/>
                 <Image
                     width={140}
@@ -165,8 +165,8 @@ function QrLogin() {
             <MSizeBox height={30}/>
             {loginContentWidget()}
             <MSizeBox height={25}/>
-            <div className="qr-login-modal-footer">
-                <span className="qr-login-modal-footer-other" onClick={() => clickLoginOther()}>选择其他登录模式</span>
+            <div className="qr-login-footer">
+                <span className="qr-login-footer-other" onClick={() => clickLoginOther()}>选择其他登录模式</span>
             </div>
         </div>
     )
