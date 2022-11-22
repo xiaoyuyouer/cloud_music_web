@@ -162,6 +162,7 @@ function QrLogin() {
 
     return (
         <div>
+            <MSizeBox height={30}/>
             {loginContentWidget()}
             <MSizeBox height={25}/>
             <div className="qr-login-modal-footer">

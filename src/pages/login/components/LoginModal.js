@@ -24,9 +24,7 @@ function LoginModal() {
                     <CloseOutlined style={{color: "#888888"}}/>
                 </div>
             </div>
-            <MSizeBox height={30}/>
             <QrLogin/>
-            <MSizeBox height={25}/>
         </div>
     )
 }
