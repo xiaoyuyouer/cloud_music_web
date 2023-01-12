@@ -1,7 +1,10 @@
+import "./DiscoverPage.css"
+
 function DiscoverPage() {
     return (
-        <div>
-            <h2>发现音乐</h2>
+        <div className="dp-container">
+            <div className="dp-header"></div>
+            <div className="dp-content"></div>
         </div>
     );
 }
